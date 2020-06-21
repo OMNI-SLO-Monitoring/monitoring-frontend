@@ -1,0 +1,12 @@
+<div class="content">
+    <div class="row">
+        <h1 style="flex-grow: 1;">Cpu Endpoints</h1>
+        <button mat-raised-button (click)="add()">add</button>
+    </div>
+      
+    <div *ngFor="let endpoint of endpointService.observationEndpointsObs | async">
+        <app-observation-endpoint-item 
+            [observationEndpoint]="endpoint">
+        </app-observation-endpoint-item>
+    </div>
+</div>

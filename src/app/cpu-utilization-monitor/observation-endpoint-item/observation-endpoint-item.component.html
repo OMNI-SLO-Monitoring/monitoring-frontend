@@ -1,0 +1,24 @@
+<mat-card>
+    <div>
+        <div class="row">
+            <h2 class="card-title" style="flex-grow: 1;">{{observationEndpoint.name}}</h2>
+            <div *ngIf="status | async; let s">
+                <h2>{{s.cpuLoad}}%</h2>
+            </div>
+        </div>
+        <h3 class="card-subtitle">{{observationEndpoint.cpuUtilQueryEndpoint}}</h3>
+        <hr>
+        <p>Critical Load Threshold: {{observationEndpoint.criticalCpuUtilThreshold}}</p>
+        <p>Query Frequency: {{observationEndpoint.cpuObservationFrequencyMilis}}</p>
+        <div *ngIf="status | async; let s">
+            <mat-card class="alert-warning" role="alert">
+                {{s.message}}
+            </mat-card>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <button type="button" mat-raised-button  (click)="edit()">Edit</button>
+        <button type="submit" mat-raised-button (click)="deleteEndpoint()">Delete</button>
+    </div>
+</mat-card>

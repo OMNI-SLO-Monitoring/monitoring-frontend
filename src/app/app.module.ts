@@ -9,19 +9,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule } from 'ngx-socket-io';
 import { config } from 'process';
+import { ErrorResponseMonitorComponent } from './error-response-monitor/error-response-monitor.component';
+import { ErrorResponseMonitorModule } from './error-response-monitor/error-response-monitor.module';
+import { FormsModule } from '@angular/forms';
+import { ErrorResponseMonitorService } from './error-response-monitor/error-response-monitor.service';
+import { LogGetterService } from './error-response-monitor/log-getter.service';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    ErrorResponseMonitorModule,
+    FormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ErrorResponseMonitorService, LogGetterService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

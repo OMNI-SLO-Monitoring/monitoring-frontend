@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { ErrorResponseMonitorService } from './error-response-monitor.service';
 import { LogGetterService } from './log-getter.service';
 
+/**
+ * This component is responsible for registering the user request properties
+ * in the UI and passing the input values down to the request info sender service
+ */
 @Component({
   selector: 'app-error-response-monitor',
   templateUrl: './error-response-monitor.component.html',
@@ -13,8 +17,10 @@ export class ErrorResponseMonitorComponent implements OnInit {
   urlEndpoint: string;
   //http method, get or post
   httpMethod;
-  //datatype of user adjusted response type
+  //datatype of user adjusted response type for get/post request
   responseType;
+  //body of the post request if it was selected
+  postBody: string;
   //received response of the request
   receivedResponse;
   //log messages to be displayed in UI
@@ -40,11 +46,12 @@ export class ErrorResponseMonitorComponent implements OnInit {
       .sendRequestInfoToBackend(
         this.urlEndpoint,
         this.httpMethod,
-        this.responseType
+        this.responseType,
+        this.postBody
       )
       .subscribe(
         (res) => (this.receivedResponse = res),
-        (err) => (this.receivedResponse = 'Incorrect Response Type')
+        (err) => (this.receivedResponse = err.message)
       );
   }
 

@@ -14,14 +14,38 @@
         </mat-select>
       </mat-form-field>
       <br />
-      <mat-form-field appearance="fill">
-        <mat-label> Expected Response Datatype</mat-label>
-        <mat-select [(ngModel)]="responseType" name="response" required>
-          <mat-option value="number"> Number </mat-option>
-          <mat-option value="string"> String </mat-option>
-          <mat-option value="boolean"> Boolean </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div class="getRequest" *ngIf="httpMethod === 'get'">
+        <mat-form-field appearance="fill">
+          <mat-label> Expected Response Datatype</mat-label>
+          <mat-select [(ngModel)]="responseType" name="responseForGet" required>
+            <mat-option value="number"> Number </mat-option>
+            <mat-option value="string"> String </mat-option>
+            <mat-option value="boolean"> Boolean </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="getRequest" *ngIf="httpMethod === 'post'">
+        <mat-form-field appearance="fill">
+          <mat-label> Expected Http Status Code</mat-label>
+          <mat-select
+            [(ngModel)]="responseType"
+            name="responseForPost"
+            required
+          >
+            <mat-option value="201"> 201 </mat-option>
+            <mat-option value="500"> 500 </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label> Post Body (Customer Name) </mat-label>
+          <textarea
+            matInput
+            [(ngModel)]="postBody"
+            name="body"
+            required
+          ></textarea>
+        </mat-form-field>
+      </div>
       <button
         mat-raised-button
         color="primary"

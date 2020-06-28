@@ -14,7 +14,6 @@ export class ErrorResponseMonitorService {
   constructor(private _httpClient: HttpClient) {}
 
   backendUrl: string = 'http://localhost:3400/request-sender';
-  res;
 
   /**
    * Sends the request information determined by the user to the
@@ -33,8 +32,8 @@ export class ErrorResponseMonitorService {
         httpMethod: `${httpMethod}`,
         responseType: `${responseType}`,
         postBody: `${postBody}`,
-      },
-      { responseType: 'text' }
+      }
+      //{ responseType: 'text' as 'json' }
     );
   }
 }

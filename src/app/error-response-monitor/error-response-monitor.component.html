@@ -27,14 +27,12 @@
       <div class="getRequest" *ngIf="httpMethod === 'post'">
         <mat-form-field appearance="fill">
           <mat-label> Expected Http Status Code</mat-label>
-          <mat-select
+          <input
+            matInput
             [(ngModel)]="responseType"
             name="responseForPost"
             required
-          >
-            <mat-option value="201"> 201 </mat-option>
-            <mat-option value="500"> 500 </mat-option>
-          </mat-select>
+          />
         </mat-form-field>
         <mat-form-field>
           <mat-label> Post Body (Customer Name) </mat-label>

@@ -12,8 +12,6 @@ import { config } from 'process';
 import { ErrorResponseMonitorComponent } from './error-response-monitor/error-response-monitor.component';
 import { ErrorResponseMonitorModule } from './error-response-monitor/error-response-monitor.module';
 import { FormsModule } from '@angular/forms';
-import { ErrorResponseMonitorService } from './error-response-monitor/error-response-monitor.service';
-import { LogGetterService } from './error-response-monitor/log-getter.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +24,6 @@ import { LogGetterService } from './error-response-monitor/log-getter.service';
     ErrorResponseMonitorModule,
     FormsModule,
   ],
-  providers: [ErrorResponseMonitorService, LogGetterService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -4,11 +4,10 @@ import { ErrorResponseMonitorComponent } from './error-response-monitor.componen
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { ErrorResponseMonitorService } from './error-response-monitor.service';
-import { LogGetterService } from './log-getter.service';
 
 @NgModule({
   declarations: [ErrorResponseMonitorComponent],
-  providers: [ErrorResponseMonitorService, LogGetterService],
+  providers: [ErrorResponseMonitorService],
   imports: [CommonModule, MaterialModule, FormsModule],
   bootstrap: [ErrorResponseMonitorComponent],
 })

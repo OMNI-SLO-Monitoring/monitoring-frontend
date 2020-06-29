@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LogMessageFormat } from 'logging-format';
 import { ErrorResponseMonitorService } from './error-response-monitor.service';
 
 /**
@@ -22,10 +22,14 @@ export class ErrorResponseMonitorComponent implements OnInit {
   postBody: string;
   //received response of the request
   receivedResponse;
-  //log messages to be displayed in UI
-  logs: Object[] = [];
+  //work check log messages to be displayed in UI
+  workLogs: LogMessageFormat[] = [];
+  //all log messages
+  allLogs: LogMessageFormat[] = [];
+  //error message for fetch all logs
+  logFetchErrorMsg: string;
 
-  constructor(private requestInfoSender: ErrorResponseMonitorService) {
+  constructor(private errorResponseService: ErrorResponseMonitorService) {
     /*
     setInterval(() => {
       this.getLogMessages();
@@ -40,7 +44,7 @@ export class ErrorResponseMonitorComponent implements OnInit {
    *  in order to render it in the UI
    */
   requestInfo() {
-    this.requestInfoSender
+    this.errorResponseService
       .sendRequestInfoToBackend(
         this.urlEndpoint,
         this.httpMethod,
@@ -51,10 +55,26 @@ export class ErrorResponseMonitorComponent implements OnInit {
         (res) => {
           this.receivedResponse = res.msg;
           if (res.log) {
-            this.logs.push(res.log);
+            this.workLogs.push(res.log);
           }
         },
         (err) => (this.receivedResponse = err.message)
       );
+  }
+
+  /**
+   * Gets all the logs with the aid of the error response monitor service
+   * from the backend to render them in the UI
+   */
+  getAllLogs() {
+    this.errorResponseService.fetchAllLogs().subscribe(
+      (res) => {
+        this.allLogs = res;
+        console.log(res);
+      },
+      (err) => {
+        this.logFetchErrorMsg = "Couldn't fetch logs";
+      }
+    );
   }
 }

@@ -59,20 +59,58 @@
     </div>
   </mat-card>
   <br />
-  <mat-card>
-    Log Messages:
-    <ul *ngIf="logs">
-      <li *ngFor="let log of logs; index as i">
-        <h3>Log Message Number {{ i + 1 }}</h3>
-        <p>
-          Type: {{ log.type }} | Time: {{ log.time }} | Detector:
-          {{ log.detector }} | Source: {{ log.source }}
-        </p>
-        <p>Message: {{ log.message }}</p>
-        <p>
-          Data: Expected: {{ log.data.expected }}, Actual: {{ log.data.result }}
-        </p>
-      </li>
-    </ul>
-  </mat-card>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Work Check Logs
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card>
+      <ul *ngIf="workLogs">
+        <li *ngFor="let log of workLogs; index as i">
+          <h3>Log Message Number {{ i + 1 }}</h3>
+          <p>
+            Type: {{ log.type }} | Time: {{ log.time }} | Detector:
+            {{ log.detector }} | Source: {{ log.source }}
+          </p>
+          <p>Message: {{ log.message }}</p>
+          <p>
+            Data: Expected: {{ log.data.expected }}, Actual:
+            {{ log.data.result }}
+          </p>
+        </li>
+      </ul>
+    </mat-card>
+  </mat-expansion-panel>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        All Logs
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="primary" (click)="getAllLogs()">
+      Get All Logs
+    </button>
+    <br />
+    <br />
+    <div *ngIf="logFetchErrorMsg">
+      <p>{{ logFetchErrorMsg }}</p>
+    </div>
+    <mat-card>
+      <ul *ngIf="allLogs">
+        <li *ngFor="let log of allLogs; index as i">
+          <h3>Log Message Number {{ i + 1 }}</h3>
+          <p>
+            Type: {{ log.type }} | Time: {{ log.time }} | Detector:
+            {{ log.detector }} | Source: {{ log.source }}
+          </p>
+          <p>Message: {{ log.message }}</p>
+          <p>
+            Data: Expected: {{ log.data.expected }}, Actual:
+            {{ log.data.result }}
+          </p>
+        </li>
+      </ul>
+    </mat-card>
+  </mat-expansion-panel>
 </div>

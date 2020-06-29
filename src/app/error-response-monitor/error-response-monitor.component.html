@@ -1,0 +1,116 @@
+<div class="request-field">
+  <mat-card class="form-card">
+    <form #requestForm="ngForm" (ngSubmit)="requestInfo()">
+      <mat-form-field appearance="fill">
+        <mat-label> Url Endpoint </mat-label>
+        <input matInput [(ngModel)]="urlEndpoint" name="url" required />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill">
+        <mat-label> Http Method </mat-label>
+        <mat-select [(ngModel)]="httpMethod" name="http" required>
+          <mat-option value="get"> Get </mat-option>
+          <mat-option value="post"> Post </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <div class="getRequest" *ngIf="httpMethod === 'get'">
+        <mat-form-field appearance="fill">
+          <mat-label> Expected Response Datatype</mat-label>
+          <mat-select [(ngModel)]="responseType" name="responseForGet" required>
+            <mat-option value="number"> Number </mat-option>
+            <mat-option value="string"> String </mat-option>
+            <mat-option value="boolean"> Boolean </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="getRequest" *ngIf="httpMethod === 'post'">
+        <mat-form-field appearance="fill">
+          <mat-label> Expected Http Status Code</mat-label>
+          <input
+            matInput
+            [(ngModel)]="responseType"
+            name="responseForPost"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label> Post Body (Customer Name) </mat-label>
+          <textarea
+            matInput
+            [(ngModel)]="postBody"
+            name="body"
+            required
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="requestForm.invalid"
+      >
+        Send request
+      </button>
+    </form>
+    <div class="response">
+      Your Response:
+      <div *ngIf="receivedResponse">{{ receivedResponse }}</div>
+    </div>
+  </mat-card>
+  <br />
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Work Check Logs
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card>
+      <ul *ngIf="workLogs">
+        <li *ngFor="let log of workLogs; index as i">
+          <h3>Log Message Number {{ i + 1 }}</h3>
+          <p>
+            Type: {{ log.type }} | Time: {{ log.time }} | Detector:
+            {{ log.detector }} | Source: {{ log.source }}
+          </p>
+          <p>Message: {{ log.message }}</p>
+          <p>
+            Data: Expected: {{ log.data.expected }}, Actual:
+            {{ log.data.result }}
+          </p>
+        </li>
+      </ul>
+    </mat-card>
+  </mat-expansion-panel>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        All Logs
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="primary" (click)="getAllLogs()">
+      Get All Logs
+    </button>
+    <br />
+    <br />
+    <div *ngIf="logFetchErrorMsg">
+      <p>{{ logFetchErrorMsg }}</p>
+    </div>
+    <mat-card>
+      <ul *ngIf="allLogs">
+        <li *ngFor="let log of allLogs; index as i">
+          <h3>Log Message Number {{ i + 1 }}</h3>
+          <p>
+            Type: {{ log.type }} | Time: {{ log.time }} | Detector:
+            {{ log.detector }} | Source: {{ log.source }}
+          </p>
+          <p>Message: {{ log.message }}</p>
+          <p>
+            Data: Expected: {{ log.data.expected }}, Actual:
+            {{ log.data.result }}
+          </p>
+        </li>
+      </ul>
+    </mat-card>
+  </mat-expansion-panel>
+</div>

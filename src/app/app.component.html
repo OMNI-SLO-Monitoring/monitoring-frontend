@@ -8,21 +8,29 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav  #sidenav [mode]="isHandset ? 'over' : 'side'" [opened]="showSidebar">
+  <mat-sidenav
+    #sidenav
+    [mode]="isHandset ? 'over' : 'side'"
+    [opened]="showSidebar"
+  >
     <mat-nav-list>
       <a mat-list-item routerLink="/cpu" routerLinkActive="list-item-active">
         <mat-icon>home</mat-icon>
-          CPU Utilization
+        CPU Utilization
+      </a>
+
+      <a
+        mat-list-item
+        routerLink="/error-response-monitor"
+        routerLinkActive="list-item-active"
+      >
+        <mat-icon>person</mat-icon>
+        Error Response
       </a>
 
       <a mat-list-item routerLink="/" routerLinkActive="list-item-active">
-          <mat-icon>person</mat-icon>
-          Error Response
-      </a>
-
-      <a mat-list-item routerLink="/" routerLinkActive="list-item-active">
-          <mat-icon>book</mat-icon>
-          Logs
+        <mat-icon>book</mat-icon>
+        Logs
       </a>
     </mat-nav-list>
   </mat-sidenav>

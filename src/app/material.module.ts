@@ -10,6 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   imports: [
@@ -24,6 +26,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatInputModule,
     MatSelectModule,
     MatExpansionModule,
+    MatTableModule,
+    MatSortModule
   ],
   exports: [
     MatButtonModule,
@@ -37,6 +41,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatInputModule,
     MatSelectModule,
     MatExpansionModule,
+    MatTableModule,
+    MatSortModule
   ],
 })
 export class MaterialModule {}

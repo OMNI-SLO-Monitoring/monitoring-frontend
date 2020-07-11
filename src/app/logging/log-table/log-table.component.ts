@@ -8,19 +8,19 @@ import { HttpClient } from '@angular/common/http';
 // Dummy Logs for testing purpose
 const dummyLogs: LogMessageFormat[] = [
   {
-    time: Date.now() + 1000 * 60 * 60 * 2,
+    time: Date.now() + 1000 * 60 * 60 * 2, // add two hours to current time
     data: {
       cpuUtilization: 70
     },
     detector: "Detector X",
-    source: "Soruce Y",
+    source: "Source Y",
     type: LogType.CPU,
     message: null
   },
   {
-    time: Date.now() + 1000 * 60 * 60 * 2,
+    time: Date.now() + 1000 * 60 * 60 * 2, // add two hours to current time
     detector: "Detector A",
-    source: "Soruce Y",
+    source: "Source Y",
     type: LogType.ERROR,
     data: {
       expected: "10",
@@ -29,10 +29,10 @@ const dummyLogs: LogMessageFormat[] = [
     message: null
   },
   {
-    time: Date.now() + 1000 * 60 * 60,
+    time: Date.now() + 1000 * 60 * 60, // add one hour to current time
     data: null,
     detector: "Detector B",
-    source: "Soruce Y",
+    source: "Source Y",
     type: LogType.CB_OPEN,
     message: null
   },
@@ -40,7 +40,7 @@ const dummyLogs: LogMessageFormat[] = [
     time: Date.now(),
     data: null,
     detector: "Detector C",
-    source: "Soruce Y",
+    source: "Source Y",
     type: LogType.CPU,
     message: null
   }
@@ -82,9 +82,9 @@ export class LogTableComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    // Using dummy Logs, delete this if logs can be fetched from issue-creator
-    this.dataSource = new MatTableDataSource(dummyLogs);
-    this.dataSource.sort = this.sort;
+    // Uncomment this to test with dummy logs
+    // this.dataSource = new MatTableDataSource(dummyLogs);
+    // this.dataSource.sort = this.sort;
   }
 
 }

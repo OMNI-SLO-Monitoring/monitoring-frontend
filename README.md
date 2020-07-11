@@ -1,4 +1,4 @@
-# MonitoringFrontend
+# Monitoring front end
 
 Provides a combined front end for both monitors [CPU-tracking-monitoring-service](https://github.com/ccims/CPU-tracking-monitoring-service) and the [Error-response-monitoring-service](https://github.com/ccims/Error-response-monitoring-service).
 

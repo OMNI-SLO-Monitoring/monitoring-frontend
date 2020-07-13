@@ -19,6 +19,9 @@ jobs:
     - name: npm install
       run: |
         npm install --dev
+    - name: build
+      run: |
+        ng build  
     - name: run unit test
       run: |
         npm run autotest  

@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'error-response-monitor',
     component: ErrorResponseMonitorComponent,
   },
+  {
+    path: 'logs',
+    loadChildren: () => import('./logging/logging.module').then((m) => m.LoggingModule)
+  }
 ];
 
 @NgModule({

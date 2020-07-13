@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CpuObserverListComponent } from './cpu-observer-list/cpu-observer-list.component';
-import { CpuUtilizationMonitorRoutes } from './cpu-utilization-monitor.routin';
+import { CpuUtilizationMonitorRoutes } from './cpu-utilization-monitor.routes';
 import { EndpoitsService } from './endpoits.service';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { ObservationEndpointItemComponent } from './observation-endpoint-item/observation-endpoint-item.component';

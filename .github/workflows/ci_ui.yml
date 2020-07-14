@@ -43,6 +43,6 @@ jobs:
     - name: run unit test
       run: | 
         npm run test
-    - name: run e2e test
+    - name: run e2e autotest
       run : |
-        npm run test:e2e
+        npm run autoe2e

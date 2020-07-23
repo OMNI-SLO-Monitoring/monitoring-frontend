@@ -11,6 +11,9 @@ import { EditObservationEndpointComponent } from '../edit-observation-endpoint/e
   templateUrl: './observation-endpoint-item.component.html',
   styleUrls: ['./observation-endpoint-item.component.scss']
 })
+/**
+ * component for updating, editing and deleting endpoint items
+ */
 export class ObservationEndpointItemComponent implements OnInit {
 
   @Input() observationEndpoint: CpuObservationEndpoint
@@ -26,7 +29,10 @@ export class ObservationEndpointItemComponent implements OnInit {
     // Establish Socket connection with backend
     this.status = this.socket.fromEvent(this.observationEndpoint.id);
   }
-
+  /**
+   * updating the endpoint with new data given
+   * @param endpoitData the given endpoint 
+   */
   updateEndpoint(endpoitData) {
     this.observationEndpoint.name = endpoitData.name,
     this.observationEndpoint.cpuUtilQueryEndpoint = endpoitData.endpoint,
@@ -36,10 +42,15 @@ export class ObservationEndpointItemComponent implements OnInit {
     this.endpointService.editEndpoint(this.observationEndpoint);
   }
 
+  /**
+   * delete the given endpoint 
+   */
   deleteEndpoint() {
     this.endpointService.deleteEndpoint(this.observationEndpoint);
   }
-
+  /**
+   * edit the end point in a dialog and update it
+   */
   edit() {
     this.matDialog.open(EditObservationEndpointComponent, { data: this.observationEndpoint }).afterClosed().subscribe(res => {
       this.updateEndpoint(res);

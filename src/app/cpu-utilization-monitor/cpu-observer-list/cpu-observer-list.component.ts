@@ -9,10 +9,17 @@ import { EditObservationEndpointComponent } from '../edit-observation-endpoint/e
   templateUrl: './cpu-observer-list.component.html',
   styleUrls: ['./cpu-observer-list.component.scss']
 })
+/**
+ * component to add a cpu observation endpoint to a list
+ */
 export class CpuObserverListComponent {
 
   constructor(public endpointService: EndpoitsService, private matDialog: MatDialog) {}
 
+  /**
+   * create an CpuObservationEndpoint object and send it via post request to the endpoint
+   * @param endpoitData CpuObservationEndpoint object as an observation endpoint
+   */
   addObservationEndpoint(endpoitData) {
     const endpoint = new CpuObservationEndpoint(
       endpoitData.name,
@@ -22,7 +29,9 @@ export class CpuObserverListComponent {
     );
     this.endpointService.addEndpoint(endpoint);
   }
-
+  /**
+   * open dialog and then adding endpoint after the dialog closes
+   */
   add() {
     this.matDialog.open(EditObservationEndpointComponent).afterClosed().subscribe(res => {
       this.addObservationEndpoint(res);

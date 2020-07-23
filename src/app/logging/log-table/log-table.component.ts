@@ -59,6 +59,9 @@ const dummyLogs: LogMessageFormat[] = [
     ]),
   ],
 })
+/**
+ * component for a table containing all Logs
+ */
 export class LogTableComponent implements OnInit {
 
   dataSource: MatTableDataSource<LogMessageFormat>;

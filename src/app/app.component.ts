@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 
@@ -18,7 +18,9 @@ export class AppComponent {
       this.showSidebar = !res.matches;
     });
   }
-
+  /**
+   * showing and hiding the sidebar with the monitoring services 
+   */
   onToggleSidebar() {
     this.showSidebar = !this.showSidebar;
     setTimeout(() => {

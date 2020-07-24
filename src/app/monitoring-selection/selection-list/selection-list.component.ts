@@ -12,4 +12,7 @@ export class SelectionListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  add() {
+
+  }
 }

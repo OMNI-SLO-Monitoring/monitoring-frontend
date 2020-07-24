@@ -4,6 +4,7 @@ import { SelectionListComponent } from './selection-list/selection-list.componen
 import { SelectionItemComponent } from './selection-item/selection-item.component';
 import { EditSelectionComponent } from './edit-selection/edit-selection.component';
 import { MaterialModule } from '../material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +12,8 @@ import { MaterialModule } from '../material.module';
   declarations: [SelectionListComponent, SelectionItemComponent, EditSelectionComponent],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
   bootstrap: [SelectionListComponent]
 })

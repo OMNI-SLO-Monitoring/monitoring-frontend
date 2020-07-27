@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditSelectionComponent } from '../edit-selection/edit-selection.component';
 import { MonitoringSelectionService } from '../monitoring-selection.service';
 
+/**
+ * Handles the list of all monitored services
+ */
 @Component({
   'selector': 'app-selection-list',
   'templateUrl': './selection-list.component.html',
@@ -12,22 +15,19 @@ export class SelectionListComponent implements OnInit {
 
   constructor(private matDialog: MatDialog, public monitoringSelectionService: MonitoringSelectionService) { }
 
+  /**
+   * On init gets all services currently monitored
+   */
   ngOnInit(): void {
     this.monitoringSelectionService.getAllSelectedServices();
   }
 
-  addSelection(selectedService) {
-    const service = {
-      'name': selectedService.name,
-      'serviceUrl': selectedService.serviceUrl
-    };
-    console.log(service);
-    this.monitoringSelectionService.addSelection(service);
-  }
-
+  /**
+   * Sends the service that was selected to be monitored
+   */
   add() {
-    this.matDialog.open(EditSelectionComponent).afterClosed().subscribe(res => {
-      this.addSelection(res);
+    this.matDialog.open(EditSelectionComponent).afterClosed().subscribe(selectedService => {
+      this.monitoringSelectionService.addSelection(selectedService);
     });
   }
 }

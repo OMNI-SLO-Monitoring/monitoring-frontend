@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder } from '@angular/forms';
+/**
+ * Handles the form for adding services to the monitoring
+ */
 @Component({
   'selector': 'app-edit-selection',
   'templateUrl': './edit-selection.component.html',
@@ -14,16 +17,21 @@ export class EditSelectionComponent implements OnInit {
   constructor(private dialog: MatDialogRef<EditSelectionComponent>,
               private formBuilder: FormBuilder) { }
 
+  /**
+   * On init makes a new blank form for monitoring a service
+   */
   ngOnInit(): void {
-
-    if (true) {
       this.newSelectionForm = this.formBuilder.group({
         name: '',
         serviceUrl: '',
       });
-    }
   }
-
+  /**
+   * On submiting the form resets the input fields and gives the data to 
+   * subscribed components
+   * 
+   * @param selectionData Input of the form
+   */
   onSubmit(selectionData) {
     this.newSelectionForm.reset();
     this.dialog.close(selectionData);

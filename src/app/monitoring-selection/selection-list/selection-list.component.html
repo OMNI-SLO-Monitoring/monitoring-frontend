@@ -4,7 +4,9 @@
         <button mat-raised-button (click)="add()">Add</button>
     </div>
       
-    <div>
-
+    <div *ngFor="let service of monitoringSelectionService.selectedServices">
+        <app-selection-item
+            [monitorSelection]="service">
+        </app-selection-item>
     </div>
 </div>

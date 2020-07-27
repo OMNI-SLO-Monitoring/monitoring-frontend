@@ -1,1 +1,18 @@
-<p>selection-item works!</p>
+<mat-card>
+    <div>
+        <div class="row">
+            <h2 class="card-title" style="flex-grow: 1;">
+              {{monitorSelection.name}}
+            </h2>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <p>{{monitorSelection.serviceUrl}}</p>
+        <br>
+        <p>{{monitorSelection.id}}</p>
+    </div>
+    <div>
+        <button type="button" mat-raised-button (click)="deleteSelection()">Delete</button>
+    </div>
+</mat-card>

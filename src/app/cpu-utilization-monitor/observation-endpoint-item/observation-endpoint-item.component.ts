@@ -13,7 +13,7 @@ import { EditObservationEndpointComponent } from '../edit-observation-endpoint/e
 })
 export class ObservationEndpointItemComponent implements OnInit {
 
-  @Input() observationEndpoint: CpuObservationEndpoint
+  @Input() observationEndpoint: CpuObservationEndpoint;
   status: Observable<CpuObservationStatus>;
 
   constructor(
@@ -31,7 +31,7 @@ export class ObservationEndpointItemComponent implements OnInit {
     this.observationEndpoint.name = endpoitData.name,
     this.observationEndpoint.cpuUtilQueryEndpoint = endpoitData.endpoint,
     this.observationEndpoint.criticalCpuUtilThreshold = endpoitData.threshold,
-    this.observationEndpoint.cpuObservationFrequencyMilis = endpoitData.frequency
+    this.observationEndpoint.cpuObservationFrequencyMilis = endpoitData.frequency;
 
     this.endpointService.editEndpoint(this.observationEndpoint);
   }
@@ -43,6 +43,6 @@ export class ObservationEndpointItemComponent implements OnInit {
   edit() {
     this.matDialog.open(EditObservationEndpointComponent, { data: this.observationEndpoint }).afterClosed().subscribe(res => {
       this.updateEndpoint(res);
-    })
+    });
   }
 }

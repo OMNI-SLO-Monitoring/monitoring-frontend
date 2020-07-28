@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditSelectionComponent } from '../edit-selection/edit-selection.component';
 import { MonitoringSelectionService } from '../monitoring-selection.service';
 
+
 /**
  * Handling of a single item shown in the list of monitored services
  */
@@ -20,7 +21,8 @@ export class SelectionItemComponent{
   /**
    * Deletes the current item
    */
-  deleteSelection() {
-    this.monitoringSelectionService.deleteSelection(this.monitorSelection._id);
+  async deleteSelection() {
+    await this.monitoringSelectionService.deleteSelection(this.monitorSelection._id);
+    window.location.reload();
   }
 }

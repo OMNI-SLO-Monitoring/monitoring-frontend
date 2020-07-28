@@ -10,14 +10,10 @@ describe('EditSelectionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditSelectionComponent ],
+      declarations: [EditSelectionComponent],
       imports: [MatDialogModule],
-      providers: [
-        {provide: MatDialogRef, useValue: {} },
-        {provide: FormBuilder, useValue: {}}
-      ]
-    })
-    .compileComponents();
+      providers: [{ provide: MatDialogRef, useValue: {} }, FormBuilder],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

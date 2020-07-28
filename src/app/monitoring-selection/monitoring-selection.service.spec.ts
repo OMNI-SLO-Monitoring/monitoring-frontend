@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { MonitoringSelectionDTO } from './dto/monitoring-selection.dto';
 import { MonitoringSelectionService } from './monitoring-selection.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('MonitoringSelectionService', () => {
   let service: MonitoringSelectionService;
@@ -9,7 +9,7 @@ describe('MonitoringSelectionService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [MonitoringSelectionService],
-      imports: [HttpClientModule],
+      imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(MonitoringSelectionService);
   });

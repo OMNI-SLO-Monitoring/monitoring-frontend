@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectionListComponent } from './selection-list.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SelectionListComponent', () => {
   let component: SelectionListComponent;
@@ -10,10 +10,9 @@ describe('SelectionListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectionListComponent ],
-      imports: [MatDialogModule, HttpClientModule]
-    })
-    .compileComponents();
+      declarations: [SelectionListComponent],
+      imports: [MatDialogModule, HttpClientTestingModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

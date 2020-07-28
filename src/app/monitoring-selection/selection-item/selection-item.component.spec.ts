@@ -10,10 +10,9 @@ describe('SelectionItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectionItemComponent ],
-      imports: [MatDialogModule, HttpClientModule]
-    })
-    .compileComponents();
+      declarations: [SelectionItemComponent],
+      imports: [MatDialogModule, HttpClientModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

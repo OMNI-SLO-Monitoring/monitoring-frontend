@@ -8,15 +8,13 @@ describe('CpuObserverListComponent', () => {
   let component: CpuObserverListComponent;
   let fixture: ComponentFixture<CpuObserverListComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CpuObserverListComponent ],
-      imports: [HttpClientModule, MatDialogModule]
-    })
-    .compileComponents();
-  }));
+  beforeEach(async(() => {}));
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [CpuObserverListComponent],
+      imports: [HttpClientModule, MatDialogModule],
+    }).compileComponents();
     fixture = TestBed.createComponent(CpuObserverListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

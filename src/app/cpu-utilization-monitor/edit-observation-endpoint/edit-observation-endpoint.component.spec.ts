@@ -12,7 +12,9 @@ describe('EditObservationEndpointComponent', () => {
   let component: EditObservationEndpointComponent;
   let fixture: ComponentFixture<EditObservationEndpointComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async(() => {}));
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [EditObservationEndpointComponent],
       imports: [MatDialogModule],
@@ -22,9 +24,6 @@ describe('EditObservationEndpointComponent', () => {
         FormBuilder,
       ],
     }).compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(EditObservationEndpointComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

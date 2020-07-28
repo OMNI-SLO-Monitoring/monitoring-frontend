@@ -23,7 +23,9 @@ describe('ObservationEndpointItemComponent', () => {
     },
   };
 
-  beforeEach(async(() => {
+  beforeEach(async(() => {}));
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ObservationEndpointItemComponent],
       providers: [
@@ -38,9 +40,6 @@ describe('ObservationEndpointItemComponent', () => {
       ],
       imports: [HttpClientModule, MatDialogModule, SocketIoModule],
     }).compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(ObservationEndpointItemComponent);
     component = fixture.componentInstance;
     component.observationEndpoint = mockCpuObservationEndpoint;

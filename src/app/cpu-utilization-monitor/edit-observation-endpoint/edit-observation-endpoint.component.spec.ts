@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditObservationEndpointComponent } from './edit-observation-endpoint.component';
+import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder } from '@angular/forms';
+
 
 describe('EditObservationEndpointComponent', () => {
   let component: EditObservationEndpointComponent;
@@ -8,7 +11,13 @@ describe('EditObservationEndpointComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditObservationEndpointComponent ]
+      declarations: [ EditObservationEndpointComponent ],
+      imports: [MatDialogModule],
+      providers: [
+        {provide: MAT_DIALOG_DATA, useValue: {} },
+        {provide: MatDialogRef, useValue: {}},
+        {provide: FormBuilder, useValue: {}}
+      ]
     })
     .compileComponents();
   }));

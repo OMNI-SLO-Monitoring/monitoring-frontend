@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,10 +39,6 @@ export class MonitoringSelectionService {
    * Sends a request to the backend to get all services currently monitored
    */
   getAllSelectedServices(): Observable <any> {
-    return this.httpClient.get(this.backendUrl)/*subscribe((data) => {
-      // Sets array to zero to avoid duplicates
-      //this.selectedServices.length = 0;
-      //this.selectedServices = this.selectedServices.concat(data);
-    })*/;
+    return this.httpClient.get(this.backendUrl);
   }
 }

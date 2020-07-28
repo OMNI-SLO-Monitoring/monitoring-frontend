@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectionItemComponent } from './selection-item.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('SelectionItemComponent', () => {
   let component: SelectionItemComponent;
@@ -8,7 +10,8 @@ describe('SelectionItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SelectionItemComponent ]
+      declarations: [ SelectionItemComponent ],
+      imports: [MatDialogModule, HttpClientModule]
     })
     .compileComponents();
   }));
@@ -17,9 +20,5 @@ describe('SelectionItemComponent', () => {
     fixture = TestBed.createComponent(SelectionItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

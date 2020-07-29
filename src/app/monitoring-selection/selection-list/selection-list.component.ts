@@ -35,7 +35,7 @@ export class SelectionListComponent implements OnInit {
   /**
    * Sends the service that was selected to be monitored to the backend which
    * subsequently registers it in the database. Thereupon the new list of services
-   * in the database is fetched through the backend and assigned to selectedServices.
+   * in the database is fetched through the backend
    */
   async add() {
     this.matDialog

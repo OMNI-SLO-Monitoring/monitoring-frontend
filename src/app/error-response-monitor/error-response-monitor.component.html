@@ -3,12 +3,23 @@
     <form #requestForm="ngForm" (ngSubmit)="requestInfo()">
       <mat-form-field appearance="fill">
         <mat-label> Url Endpoint </mat-label>
-        <input matInput [(ngModel)]="urlEndpoint" name="url" required />
+        <input
+          matInput
+          [(ngModel)]="urlEndpoint"
+          name="url"
+          ngDefaultControl
+          required
+        />
       </mat-form-field>
       <br />
       <mat-form-field appearance="fill">
         <mat-label> Http Method </mat-label>
-        <mat-select [(ngModel)]="httpMethod" name="http" required>
+        <mat-select
+          [(ngModel)]="httpMethod"
+          name="http"
+          ngDefaultControl
+          required
+        >
           <mat-option value="get"> Get </mat-option>
           <mat-option value="post"> Post </mat-option>
         </mat-select>
@@ -17,7 +28,12 @@
       <div class="getRequest" *ngIf="httpMethod === 'get'">
         <mat-form-field appearance="fill">
           <mat-label> Expected Response Datatype</mat-label>
-          <mat-select [(ngModel)]="responseType" name="responseForGet" required>
+          <mat-select
+            [(ngModel)]="responseType"
+            name="responseForGet"
+            ngDefaultControl
+            required
+          >
             <mat-option value="number"> Number </mat-option>
             <mat-option value="string"> String </mat-option>
             <mat-option value="boolean"> Boolean </mat-option>
@@ -32,6 +48,7 @@
             [(ngModel)]="responseType"
             name="responseForPost"
             required
+            ngDefaultControl
           />
         </mat-form-field>
         <mat-form-field>
@@ -40,6 +57,7 @@
             matInput
             [(ngModel)]="postBody"
             name="body"
+            ngDefaultControl
             required
           ></textarea>
         </mat-form-field>

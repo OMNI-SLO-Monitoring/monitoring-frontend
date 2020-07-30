@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorResponseMonitorComponent } from './error-response-monitor.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 describe('ErrorResponseMonitorComponent', () => {
   let component: ErrorResponseMonitorComponent;
@@ -8,9 +11,9 @@ describe('ErrorResponseMonitorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ErrorResponseMonitorComponent ]
-    })
-    .compileComponents();
+      declarations: [ErrorResponseMonitorComponent],
+      imports: [MatDialogModule, HttpClientModule, FormsModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

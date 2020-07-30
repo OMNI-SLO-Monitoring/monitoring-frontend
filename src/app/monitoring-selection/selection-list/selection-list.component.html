@@ -1,0 +1,14 @@
+<div class="content">
+    <div class="row">
+        <h1 style="flex-grow: 1;">Monitored services</h1>
+        <button mat-raised-button (click)="add()">Add</button>
+    </div>
+      
+    <div *ngFor="let service of selectedServices">
+        <br>
+        <app-selection-item
+            [monitorSelection]="service">
+        </app-selection-item>
+
+    </div>
+</div>

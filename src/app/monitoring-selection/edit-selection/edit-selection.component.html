@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Edit Service Monitoring</h1>
+<div mat-dialog-content>
+    <form *ngIf="newSelectionForm" [formGroup]="newSelectionForm">
+        <mat-form-field class="form-group">
+            <mat-label for="name">Service Name</mat-label>
+            <input matInput type="text" formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="form-group">
+            <mat-label for="name">Service URL</mat-label>
+            <input matInput type="text" formControlName="serviceUrl">
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button (click)="onSubmit(newSelectionForm.value)">Save</button>
+</div>

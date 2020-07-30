@@ -12,6 +12,7 @@ import { config } from 'process';
 import { ErrorResponseMonitorComponent } from './error-response-monitor/error-response-monitor.component';
 import { ErrorResponseMonitorModule } from './error-response-monitor/error-response-monitor.module';
 import { FormsModule } from '@angular/forms';
+import { MonitoringSelectionModule} from './monitoring-selection/monitoring-selection.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     HttpClientModule,
     ErrorResponseMonitorModule,
+    MonitoringSelectionModule,
     FormsModule,
   ],
   bootstrap: [AppComponent],

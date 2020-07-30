@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
-import { CpuObservationEndpoint, CpuObservationStatus } from 'cpu-monitoring-models';
+import {
+  CpuObservationEndpoint,
+  CpuObservationStatus,
+} from 'cpu-monitoring-models';
 import { EndpoitsService } from '../endpoits.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditObservationEndpointComponent } from '../edit-observation-endpoint/edit-observation-endpoint.component';
@@ -9,21 +12,20 @@ import { EditObservationEndpointComponent } from '../edit-observation-endpoint/e
 @Component({
   selector: 'app-observation-endpoint-item',
   templateUrl: './observation-endpoint-item.component.html',
-  styleUrls: ['./observation-endpoint-item.component.scss']
+  styleUrls: ['./observation-endpoint-item.component.scss'],
 })
 /**
  * component for updating, editing and deleting endpoint items
  */
 export class ObservationEndpointItemComponent implements OnInit {
-
-  @Input() observationEndpoint: CpuObservationEndpoint
+  @Input() observationEndpoint: CpuObservationEndpoint;
   status: Observable<CpuObservationStatus>;
 
   constructor(
     private socket: Socket,
     private endpointService: EndpoitsService,
     private matDialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // Establish Socket connection with backend
@@ -34,10 +36,12 @@ export class ObservationEndpointItemComponent implements OnInit {
    * @param endpoitData the given endpoint 
    */
   updateEndpoint(endpoitData) {
-    this.observationEndpoint.name = endpoitData.name,
-    this.observationEndpoint.cpuUtilQueryEndpoint = endpoitData.endpoint,
-    this.observationEndpoint.criticalCpuUtilThreshold = endpoitData.threshold,
-    this.observationEndpoint.cpuObservationFrequencyMilis = endpoitData.frequency
+    (this.observationEndpoint.name = endpoitData.name),
+      (this.observationEndpoint.cpuUtilQueryEndpoint = endpoitData.endpoint),
+      (this.observationEndpoint.criticalCpuUtilThreshold =
+        endpoitData.threshold),
+      (this.observationEndpoint.cpuObservationFrequencyMilis =
+        endpoitData.frequency);
 
     this.endpointService.editEndpoint(this.observationEndpoint);
   }
@@ -52,8 +56,13 @@ export class ObservationEndpointItemComponent implements OnInit {
    * edit the end point in a dialog and update it
    */
   edit() {
-    this.matDialog.open(EditObservationEndpointComponent, { data: this.observationEndpoint }).afterClosed().subscribe(res => {
-      this.updateEndpoint(res);
-    })
+    this.matDialog
+      .open(EditObservationEndpointComponent, {
+        data: this.observationEndpoint,
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.updateEndpoint(res);
+      });
   }
 }

@@ -36,7 +36,22 @@ export class ErrorResponseMonitorComponent implements OnInit {
     }, 1000);*/
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (localStorage.getItem('urlEndpoint') !== undefined) {
+      this.urlEndpoint = localStorage.getItem('urlEndpoint');
+    }
+  }
+
+  /**
+   * Stores the url endpoint input in local storage if the respective
+   * input field is not empty
+   */
+  storeUrlEndpoint(url: string) {
+    console.log(url);
+    if (url.length > 0) {
+      localStorage.setItem('urlEndpoint', this.urlEndpoint);
+    }
+  }
 
   /**
    * Passes the request info down to the request info sender service and receives

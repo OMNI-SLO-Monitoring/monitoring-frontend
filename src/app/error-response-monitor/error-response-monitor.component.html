@@ -9,6 +9,8 @@
           name="url"
           ngDefaultControl
           required
+          #url
+          (change)="storeUrlEndpoint(url.value)"
         />
       </mat-form-field>
       <br />

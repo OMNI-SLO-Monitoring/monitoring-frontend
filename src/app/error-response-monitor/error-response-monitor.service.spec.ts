@@ -47,4 +47,26 @@ describe('ErrorResponseMonitorService', () => {
     const mockRequest = httpMock.expectOne('http://localhost:3400/messages');
     mockRequest.flush(mockLogs);
   });
+
+  /**
+   * Test function to probe the functionality of the sendRequestInfoToBackend
+   * operation that returns the fetched data based on the request parameters
+   */
+  it('should send the request parameters to backend', () => {
+    const expectedData = 31;
+    service
+      .sendRequestInfoToBackend(
+        'http://localhost:3000/request-handler/balance',
+        'get',
+        31,
+        null
+      )
+      .subscribe((res) => {
+        expect(res).toEqual(expectedData);
+      });
+    const mockRequest = httpMock.expectOne(
+      'http://localhost:3400/request-sender'
+    );
+    mockRequest.flush(31);
+  });
 });

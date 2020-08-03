@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditSelectionComponent } from './edit-selection.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 
 describe('EditSelectionComponent', () => {
   let component: EditSelectionComponent;

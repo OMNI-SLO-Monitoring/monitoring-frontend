@@ -8,24 +8,24 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Usage
 
-Cpu-tracking-monitoring-service:
+### Cpu-tracking-monitoring-service:
 
 The CPU-tracking-monitoring-serivce provides the possibility to add services which are to be monitored. These services as of now only comprise the database service. The services that are added need
 to be importing the [cpu-utilization-observer](https://github.com/ccims/cpu-utilization-observer) package which exposes an endpoint that the backend of the cpu-tracking-monitoring-service scrapes for
 the cpu load. 
 
 
-Error-response-monitoring-service:
+### Error-response-monitoring-service:
 
-The Error-response-monitoring-service lets one define certain request parameters in its UI for work checking the database service. The user can adjust the type of request (GET or POST) and the expected response 
+The Error-response-monitoring-service lets one define certain request parameters in its UI for testing the database service in a environment that closely resembles its use cases. The user can adjust the type of request (GET or POST) and the expected response 
 which in the case of a GET request is the response data and in the case of a POST request is the HTTP status code. In its UI, one can also fetch all logs received by the backend of the Error-response-monitoring-service
 and observe specifically the logs created by work checking the database service.
 
-Monitoring-selection:
+### Monitoring-selection:
 
 The combined frontend also offers the feature to register multiple services that are to be monitored. Upon registration, the Error-response monitor stores the respective information about the service in the database and will ony accept incoming logs from those services, rejecting services that are not registered in the database. 
 
-Logs:
+### Logs:
 
 All logs can be seen here.
 

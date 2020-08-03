@@ -7,6 +7,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { FormBuilder } from '@angular/forms';
+import { CpuObservationEndpoint } from 'cpu-monitoring-models';
 
 describe('EditObservationEndpointComponent', () => {
   let component: EditObservationEndpointComponent;
@@ -20,6 +21,7 @@ describe('EditObservationEndpointComponent', () => {
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useValue: {} },
         FormBuilder,
+        { provide: CpuObservationEndpoint, useValue: {} },
       ],
     }).compileComponents();
   }));

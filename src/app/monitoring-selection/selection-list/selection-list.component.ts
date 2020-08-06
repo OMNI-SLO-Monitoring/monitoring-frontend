@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EditSelectionComponent } from '../edit-selection/edit-selection.component';
 import { MonitoringSelectionService } from '../monitoring-selection.service';
+import { MonitoringSelectionDTO } from '../dto/monitoring-selection.dto';
 
 /**
  * Handles the list of all monitored services
@@ -13,7 +14,7 @@ import { MonitoringSelectionService } from '../monitoring-selection.service';
 })
 export class SelectionListComponent implements OnInit {
   // services to be monitored
-  selectedServices = [];
+  selectedServices: MonitoringSelectionDTO[] = [];
 
   constructor(
     private matDialog: MatDialog,
@@ -28,6 +29,7 @@ export class SelectionListComponent implements OnInit {
     this.monitoringSelectionService
       .getAllSelectedServices()
       .subscribe((res) => {
+        console.log(res);
         this.selectedServices = res;
       });
   }

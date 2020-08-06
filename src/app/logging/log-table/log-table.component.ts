@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 // Dummy Logs for testing purpose
 const dummyLogs: LogMessageFormat[] = [
@@ -70,18 +71,28 @@ export class LogTableComponent implements OnInit {
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private http: HttpClient) {
+  serviceId: string;
+
+  constructor(private http: HttpClient, private route: ActivatedRoute) {
+    this.serviceId = this.route.snapshot.params["id"];
     this.fetchLogs();
   }
 
   /**
-   * Fetch Logs from Issue-creator Service
+   * Fetch Logs from Issue-creator Service, can get all logs or the ones from a specific Service.
+   * 
+   * If there is no known id in the serviceID - field, then all logs are fetched. If so then only the ones from the server with that given
+   * id are fetched. 
    */
   fetchLogs() {
-    this.http.get("http://localhost:3500").subscribe((logs) => {
-      this.dataSource = new MatTableDataSource(logs as LogMessageFormat[]);
-      this.dataSource.sort = this.sort;
-    })
+    if (!this.serviceId) {
+      this.http.get("http://localhost:3500").subscribe((logs) => {
+        this.dataSource = new MatTableDataSource(logs as LogMessageFormat[]);
+        this.dataSource.sort = this.sort;
+      })
+    } else {
+      // TODO: Query Logs for one service with id
+    }
   }
   
   ngOnInit(): void {

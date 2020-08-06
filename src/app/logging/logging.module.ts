@@ -11,7 +11,7 @@ import { MaterialModule } from '../material.module';
   imports: [
     CommonModule,
     LoggingRoutes,
-    MaterialModule
+    MaterialModule,
   ]
 })
 export class LoggingModule { }

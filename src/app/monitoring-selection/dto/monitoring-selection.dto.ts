@@ -1,5 +1,5 @@
 export class MonitoringSelectionDTO {
     name: string;
-    id: string;
+    _id: string;
     serviceUrl: string;
 }

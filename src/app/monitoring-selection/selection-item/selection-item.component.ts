@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EditSelectionComponent } from '../edit-selection/edit-selection.component';
 import { MonitoringSelectionService } from '../monitoring-selection.service';
+import { MonitoringSelectionDTO } from '../dto/monitoring-selection.dto';
 
 
 /**
@@ -14,7 +15,7 @@ import { MonitoringSelectionService } from '../monitoring-selection.service';
 })
 export class SelectionItemComponent{
 
-  @Input() monitorSelection: any;
+  @Input() monitorSelection: MonitoringSelectionDTO;
   constructor(private matDialog: MatDialog,
               private monitoringSelectionService: MonitoringSelectionService) { }
 

@@ -9,6 +9,7 @@
         <h3 class="card-subtitle">{{observationEndpoint.cpuUtilQueryEndpoint}}</h3>
         <hr>
         <p>Critical Load Threshold: {{observationEndpoint.criticalCpuUtilThreshold}}</p>
+        <p>Minimal Load Threshold: {{observationEndpoint.minimalCpuUtilThreshold}}</p>
         <p>Query Frequency: {{observationEndpoint.cpuObservationFrequencyMilis}}</p>
         <div *ngIf="status | async; let s">
             <mat-card class="alert-warning" role="alert">

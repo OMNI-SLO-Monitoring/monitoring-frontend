@@ -4,6 +4,7 @@ import { ErrorResponseMonitorComponent } from './error-response-monitor.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ErrorResponseMonitorService } from './error-response-monitor.service';
 
 describe('ErrorResponseMonitorComponent', () => {
   let component: ErrorResponseMonitorComponent;
@@ -13,6 +14,7 @@ describe('ErrorResponseMonitorComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ErrorResponseMonitorComponent],
       imports: [MatDialogModule, HttpClientModule, FormsModule],
+      providers: [ErrorResponseMonitorService],
     }).compileComponents();
   }));
 

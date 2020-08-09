@@ -29,17 +29,14 @@
       <br />
       <div class="getRequest" *ngIf="httpMethod === 'get'">
         <mat-form-field appearance="fill">
-          <mat-label> Expected Response Datatype</mat-label>
-          <mat-select
-            [(ngModel)]="responseType"
+          <mat-label> Expected Response</mat-label>
+          <input
+            matInput
+            [(ngModel)]="expResponse"
             name="responseForGet"
             ngDefaultControl
             required
-          >
-            <mat-option value="number"> Number </mat-option>
-            <mat-option value="string"> String </mat-option>
-            <mat-option value="boolean"> Boolean </mat-option>
-          </mat-select>
+          />
         </mat-form-field>
       </div>
       <div class="getRequest" *ngIf="httpMethod === 'post'">
@@ -47,7 +44,7 @@
           <mat-label> Expected Http Status Code</mat-label>
           <input
             matInput
-            [(ngModel)]="responseType"
+            [(ngModel)]="expResponse"
             name="responseForPost"
             required
             ngDefaultControl

@@ -16,8 +16,8 @@ export class ErrorResponseMonitorComponent implements OnInit {
   urlEndpoint: string;
   //http method, get or post
   httpMethod;
-  //datatype of user adjusted response type for get/post request
-  responseType;
+  //expected response of the request
+  expResponse;
   //body of the post request if it was selected
   postBody: string;
   //received response of the request
@@ -63,7 +63,7 @@ export class ErrorResponseMonitorComponent implements OnInit {
       .sendRequestInfoToBackend(
         this.urlEndpoint,
         this.httpMethod,
-        this.responseType,
+        this.expResponse,
         this.postBody
       )
       .subscribe(

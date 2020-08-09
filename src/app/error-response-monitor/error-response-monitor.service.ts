@@ -29,13 +29,13 @@ export class ErrorResponseMonitorService {
   sendRequestInfoToBackend(
     urlEndpoint: string,
     httpMethod,
-    responseType,
+    expectedResponse,
     postBody?: string
   ): Observable<any> {
     return this._httpClient.post(this.backendSenderUrl, {
       url: `${urlEndpoint}`,
       httpMethod: `${httpMethod}`,
-      responseType: `${responseType}`,
+      expResponse: `${expectedResponse}`,
       postBody: `${postBody}`,
     });
   }

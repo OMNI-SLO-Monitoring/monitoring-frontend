@@ -7,6 +7,7 @@ import {
   CpuObservationEndpoint,
   CpuObservationStatus,
 } from 'cpu-monitoring-models';
+import { EndpoitsService } from '../endpoits.service';
 
 describe('ObservationEndpointItemComponent', () => {
   let component: ObservationEndpointItemComponent;
@@ -35,6 +36,7 @@ describe('ObservationEndpointItemComponent', () => {
           provide: CpuObservationEndpoint,
           useValue: mockCpuObservationEndpoint,
         },
+        EndpoitsService,
       ],
       imports: [HttpClientModule, MatDialogModule, SocketIoModule],
     }).compileComponents();

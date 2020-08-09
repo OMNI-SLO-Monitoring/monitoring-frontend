@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { MonitoringSelectionDTO } from './dto/monitoring-selection.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,10 @@ export class MonitoringSelectionService {
   backendUrl = 'http://localhost:3400/monitoring-selection';
 
   // array of monitored services objects, is used to display monitored services
-  selectedServices = [];
+  selectedServices: MonitoringSelectionDTO[] = [];
+  servicesSubject = new BehaviorSubject<MonitoringSelectionDTO[]>([]);
+
+
   constructor(private httpClient: HttpClient) {}
 
   /**
@@ -22,9 +26,10 @@ export class MonitoringSelectionService {
    * @param selection Service added to be monitored
    * @returns the http post request as promise
    */
-  addSelection(selection: any): Promise<any> {
+  addSelection(selection: MonitoringSelectionDTO) {
     try {
-      return this.httpClient.post(this.backendUrl, selection).toPromise();
+      this.httpClient.post(this.backendUrl, selection).toPromise();
+      this.selectedServices.push(selection);
     } catch (err) {
       console.log('Backend not available');
     }
@@ -35,9 +40,9 @@ export class MonitoringSelectionService {
    * @param selectionId Id of monitored Service
    * @returns the http delete request as promise
    */
-  deleteSelection(selectionId: string): Promise<any> {
+  deleteSelection(selectionId: string) {
     try {
-      return this.httpClient
+      this.httpClient
         .delete(this.backendUrl + '/' + selectionId)
         .toPromise();
     } catch (err) {
@@ -50,11 +55,19 @@ export class MonitoringSelectionService {
    *
    * @returns the value from the http get request
    */
-  getAllSelectedServices(): Observable<any> {
-    try {
-      return this.httpClient.get(this.backendUrl);
-    } catch (err) {
-      console.log('Backend not available');
-    }
+  getAllSelectedServices() {
+    this.httpClient.get(this.backendUrl).subscribe(res => {
+      this.selectedServices = res as MonitoringSelectionDTO[];
+      this.servicesSubject.next(this.selectedServices);
+    })
+  }
+
+  /**
+   * finds a service with the specified id
+   * 
+   * @param id of service
+   */
+  getServiceById(id: string) {
+    return this.selectedServices.find(service => service._id == id);
   }
 }

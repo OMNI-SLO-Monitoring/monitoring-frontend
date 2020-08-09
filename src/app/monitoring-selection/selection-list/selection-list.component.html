@@ -3,7 +3,7 @@
         <h1 style="flex-grow: 1;">Monitored services</h1>
         <button mat-raised-button (click)="add()">Add</button>
     </div>
-    <div *ngFor="let service of selectedServices">
+    <div *ngFor="let service of monitoringSelectionService.servicesSubject | async">
         <br>
         <app-selection-item
             [monitorSelection]="service">

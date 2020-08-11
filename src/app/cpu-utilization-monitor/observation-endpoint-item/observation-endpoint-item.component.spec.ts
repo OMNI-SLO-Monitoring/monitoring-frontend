@@ -16,6 +16,7 @@ describe('ObservationEndpointItemComponent', () => {
     'mock',
     'mockUrl',
     1,
+    0,
     1
   );
   let mockSocket = {

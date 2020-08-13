@@ -20,12 +20,13 @@ export class CpuObserverListComponent {
    * create an CpuObservationEndpoint object and send it via post request to the endpoint
    * @param endpoitData CpuObservationEndpoint object as an observation endpoint
    */
-  addObservationEndpoint(endpoitData) {
+  addObservationEndpoint(endpointData) {
     const endpoint = new CpuObservationEndpoint(
-      endpoitData.name,
-      endpoitData.endpoint,
-      endpoitData.threshold,
-      endpoitData.frequency
+      endpointData.name,
+      endpointData.endpoint,
+      endpointData.threshold,
+      endpointData.minimal,
+      endpointData.frequency,
     );
     this.endpointService.addEndpoint(endpoint);
   }

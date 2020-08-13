@@ -35,13 +35,12 @@ export class ObservationEndpointItemComponent implements OnInit {
    * updating the endpoint with new data given
    * @param endpoitData the given endpoint 
    */
-  updateEndpoint(endpoitData) {
-    (this.observationEndpoint.name = endpoitData.name),
-      (this.observationEndpoint.cpuUtilQueryEndpoint = endpoitData.endpoint),
-      (this.observationEndpoint.criticalCpuUtilThreshold =
-        endpoitData.threshold),
-      (this.observationEndpoint.cpuObservationFrequencyMilis =
-        endpoitData.frequency);
+  updateEndpoint(endpointData) {
+    this.observationEndpoint.name = endpointData.name,
+    this.observationEndpoint.cpuUtilQueryEndpoint = endpointData.endpoint,
+    this.observationEndpoint.criticalCpuUtilThreshold = endpointData.threshold,
+    this.observationEndpoint.minimalCpuUtilThreshold = endpointData.minimal,
+    this.observationEndpoint.cpuObservationFrequencyMilis = endpointData.frequency;
 
     this.endpointService.editEndpoint(this.observationEndpoint);
   }
@@ -53,7 +52,7 @@ export class ObservationEndpointItemComponent implements OnInit {
     this.endpointService.deleteEndpoint(this.observationEndpoint);
   }
   /**
-   * edit the end point in a dialog and update it
+   * edit the endpoint in a dialog and update it
    */
   edit() {
     this.matDialog

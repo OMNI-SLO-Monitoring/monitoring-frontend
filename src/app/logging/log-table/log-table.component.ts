@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
 // Dummy Logs for testing purpose
 const dummyLogs: LogMessageFormat[] = [
@@ -78,7 +79,7 @@ export class LogTableComponent implements OnInit {
    * Fetch Logs from Issue-creator Service
    */
   fetchLogs() {
-    this.http.get("http://localhost:3500").subscribe((logs) => {
+    this.http.get(environment.BACKEND_ISSUE_CREATOR_URL).subscribe((logs) => {
       this.dataSource = new MatTableDataSource(logs as LogMessageFormat[]);
       this.dataSource.sort = this.sort;
     })

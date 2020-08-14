@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import {environment} from '../../environments/environment';
 
 import { ErrorResponseMonitorService } from './error-response-monitor.service';
 import {
@@ -44,7 +45,7 @@ describe('ErrorResponseMonitorService', () => {
       expect(logs).toEqual(mockLogs);
     });
 
-    const mockRequest = httpMock.expectOne('http://localhost:3400/messages');
+    const mockRequest = httpMock.expectOne(`${environment.BACKEND_RESPONSE_MONITOR_URL}messages`);
     mockRequest.flush(mockLogs);
   });
 
@@ -56,7 +57,7 @@ describe('ErrorResponseMonitorService', () => {
     const expectedData = 31;
     service
       .sendRequestInfoToBackend(
-        'http://localhost:3000/request-handler/balance',
+        `${environment.BACKEND_DB_SERVICE_URL}request-handler/balance`,
         'get',
         31,
         null
@@ -65,7 +66,7 @@ describe('ErrorResponseMonitorService', () => {
         expect(res).toEqual(expectedData);
       });
     const mockRequest = httpMock.expectOne(
-      'http://localhost:3400/request-sender'
+      `${environment.BACKEND_RESPONSE_MONITOR_URL}request-sender`
     );
     mockRequest.flush(31);
   });

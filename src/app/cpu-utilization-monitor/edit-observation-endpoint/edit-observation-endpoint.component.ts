@@ -32,6 +32,7 @@ export class EditObservationEndpointComponent implements OnInit {
         endpoint: '',
         threshold: '',
         frequency: '',
+        minimal: 0,
       })
     } else {
       this.newEndpointForm = this.formBuilder.group({
@@ -39,11 +40,14 @@ export class EditObservationEndpointComponent implements OnInit {
         endpoint: this.endpoint.cpuUtilQueryEndpoint,
         threshold: this.endpoint.criticalCpuUtilThreshold,
         frequency: this.endpoint.cpuObservationFrequencyMilis,
+        minimal: this.endpoint.minimalCpuUtilThreshold
       })
     }
   }
+
   /**
    * after the data was submitted the dialog closes and the form resets
+   * 
    * @param endpointData the given endpoint
    */
   onSubmit(endpointData) {

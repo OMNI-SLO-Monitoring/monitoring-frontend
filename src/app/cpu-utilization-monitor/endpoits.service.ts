@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CpuObservationEndpoint } from 'cpu-monitoring-models';
 import { HttpClient } from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 /**
  * service for managing endpoints with functions for adding, editing, 
@@ -12,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EndpoitsService {
 
-  api = "http://localhost:3100";
+  api = environment.BACKEND_CPU_MONITOR_URL;
 
   observationEndpointsObs: Observable<CpuObservationEndpoint[]>;
 
@@ -21,14 +22,14 @@ export class EndpoitsService {
   }
 
   /**
-   * send a get request to http://localhost:3100 and get the list of endpoints
+   * send a get request to  CPU-monitor backend and get the list of endpoints
    */
   getObservationEndpoints() {
     this.observationEndpointsObs = this.http.get<CpuObservationEndpoint[]>(this.api);
   }
 
   /**
-   * send post request to http://localhost:3100 and add the endpoint to the list
+   * send post request to CPU-monitor backend and add the endpoint to the list
    * @param endpoint the given cpu endpoint
    */
   addEndpoint(endpoint: CpuObservationEndpoint) {
@@ -36,18 +37,18 @@ export class EndpoitsService {
   }
 
   /**
-   * send post request to http://localhost:3100/edit to edit and then update the specified endpoint
+   * send post request to CPU-monitor backend /edit to edit and then update the specified endpoint
    * @param endpoint the given cpu endpoint
    */
   editEndpoint(endpoint: CpuObservationEndpoint) {
-    this.observationEndpointsObs = this.http.post<CpuObservationEndpoint[]>(`${this.api}/edit`, endpoint);
+    this.observationEndpointsObs = this.http.post<CpuObservationEndpoint[]>(`${this.api}edit`, endpoint);
   }
 
   /**
-   * send a post request to http://localhost:3100/delete to delete the given endpoint
+   * send a post request to CPU-monitor backendCPU-monitor backend /delete to delete the given endpoint
    * @param endpoint the given cpu endpoint
    */
   deleteEndpoint(endpoint: CpuObservationEndpoint) {
-    this.observationEndpointsObs = this.http.post<CpuObservationEndpoint[]>(`${this.api}/delete`, endpoint);
+    this.observationEndpointsObs = this.http.post<CpuObservationEndpoint[]>(`${this.api}delete`, endpoint);
   }
 }

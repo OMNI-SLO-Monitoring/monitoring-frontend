@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
  * monitored services
  */
 export class MonitoringSelectionService {
-  backendUrl = 'http://localhost:3400/monitoring-selection';
+  backendUrl = `${environment.BACKEND_RESPONSE_MONITOR_URL}monitoring-selection`;
 
   // array of monitored services objects, is used to display monitored services
   selectedServices = [];

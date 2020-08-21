@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../environments/environment';
 
 /**
  * This service is responsible for sending the request properties the user
@@ -16,11 +17,11 @@ export class ErrorResponseMonitorService {
   /**
    * Endpoint for handling the request blueprint
    */
-  backendSenderUrl: string = 'http://localhost:3400/request-sender';
+  backendSenderUrl: string = `${environment.BACKEND_RESPONSE_MONITOR_URL}request-sender`;
   /**
    * Endpoint for fetching all the logs
    */
-  backendLogUrl: string = 'http://localhost:3400/messages';
+  backendLogUrl: string = `${environment.BACKEND_RESPONSE_MONITOR_URL}messages`;
 
   /**
    * Sends the request information determined by the user to the

@@ -18,7 +18,9 @@ export class MonitoringSelectionService {
   servicesSubject = new BehaviorSubject<MonitoringSelectionDTO[]>([]);
 
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    this.getAllSelectedServices();
+  }
 
   /**
    * Sends a request to the backend to add a service to the database

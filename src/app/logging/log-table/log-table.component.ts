@@ -91,14 +91,15 @@ export class LogTableComponent implements OnInit {
    * id are fetched. 
    */
   fetchLogs() {
-    if (!this.serviceId) {
-      this.http.get("http://localhost:3500").subscribe((logs) => {
-        this.dataSource = new MatTableDataSource(logs as LogMessageFormat[]);
-        this.dataSource.sort = this.sort;
-      })
-    } else {
-      // TODO: Query Logs for one service with id
+    let url = "http://localhost:3500/";
+    if (this.serviceId) {
+      url = url + this.serviceId;
     }
+
+    this.http.get(url).subscribe((logs) => {
+      this.dataSource = new MatTableDataSource(logs as LogMessageFormat[]);
+      this.dataSource.sort = this.sort;
+    })
   }
   
   ngOnInit(): void {
@@ -106,5 +107,4 @@ export class LogTableComponent implements OnInit {
     // this.dataSource = new MatTableDataSource(dummyLogs);
     // this.dataSource.sort = this.sort;
   }
-
 }

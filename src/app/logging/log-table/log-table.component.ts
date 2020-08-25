@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { MonitoringSelectionDTO } from 'src/app/monitoring-selection/dto/monitoring-selection.dto';
 import { MonitoringSelectionService } from 'src/app/monitoring-selection/monitoring-selection.service';
+import {environment} from '../../../environments/environment';
 
 // Dummy Logs for testing purpose
 const dummyLogs: LogMessageFormat[] = [
@@ -91,11 +92,10 @@ export class LogTableComponent implements OnInit {
    * id are fetched. 
    */
   fetchLogs() {
-    let url = "http://localhost:3500/";
+    let url = environment.BACKEND_ISSUE_CREATOR_URL;
     if (this.serviceId) {
       url = url + this.serviceId;
     }
-
     this.http.get(url).subscribe((logs) => {
       this.dataSource = new MatTableDataSource(logs as LogMessageFormat[]);
       this.dataSource.sort = this.sort;

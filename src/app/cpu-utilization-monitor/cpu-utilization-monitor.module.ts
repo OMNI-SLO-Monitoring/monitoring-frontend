@@ -8,10 +8,11 @@ import { ObservationEndpointItemComponent } from './observation-endpoint-item/ob
 import { MaterialModule } from '../material.module';
 import { EditObservationEndpointComponent } from './edit-observation-endpoint/edit-observation-endpoint.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {environment} from '../../environments/environment';
 
 
 const config: SocketIoConfig = {
-  url: "http://localhost:3100",
+  url: environment.BACKEND_CPU_MONITOR_URL,
 }
 
 @NgModule({

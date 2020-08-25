@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { MonitoringSelectionDTO } from './dto/monitoring-selection.dto';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ import { MonitoringSelectionDTO } from './dto/monitoring-selection.dto';
  * monitored services
  */
 export class MonitoringSelectionService {
-  backendUrl = 'http://localhost:3400/monitoring-selection';
+  backendUrl = `${environment.BACKEND_RESPONSE_MONITOR_URL}monitoring-selection`;
 
   // array of monitored services objects, is used to display monitored services
   selectedServices: MonitoringSelectionDTO[] = [];

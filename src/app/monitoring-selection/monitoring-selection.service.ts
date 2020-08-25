@@ -24,10 +24,9 @@ export class MonitoringSelectionService {
   }
 
   /**
-   * Sends a request to the backend to add a service to the database
+   * Sends a request to the backend to add a service to the database of the response monitor
    *
    * @param selection Service added to be monitored
-   * @returns the http post request as promise
    */
   addSelection(selection: MonitoringSelectionDTO) {
     try {
@@ -38,10 +37,9 @@ export class MonitoringSelectionService {
     }
   }
   /**
-   * Sends a request to the backend to delete the selected service in the database
+   * Sends a request to the backend to delete the selected service in the database of the response monitor
    *
    * @param selectionId Id of monitored Service
-   * @returns the http delete request as promise
    */
   deleteSelection(selectionId: string) {
     try {
@@ -55,8 +53,6 @@ export class MonitoringSelectionService {
 
   /**
    * Sends a request to the backend to get all services currently monitored
-   *
-   * @returns the value from the http get request
    */
   getAllSelectedServices() {
     this.httpClient.get(this.backendUrl).subscribe(res => {
@@ -69,6 +65,7 @@ export class MonitoringSelectionService {
    * finds a service with the specified id
    * 
    * @param id of service
+   * @returns service with matching id or undefined if no service matches id
    */
   getServiceById(id: string) {
     return this.selectedServices.find(service => service._id == id);

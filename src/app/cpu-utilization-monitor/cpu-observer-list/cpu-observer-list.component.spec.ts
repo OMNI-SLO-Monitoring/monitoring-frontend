@@ -11,6 +11,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { CpuUtilizationMonitorRoutes } from '../cpu-utilization-monitor.routes';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 
 const config: SocketIoConfig = {
   url: "http://localhost:3100",
@@ -19,6 +20,7 @@ const config: SocketIoConfig = {
 describe('CpuObserverListComponent', () => {
   let component: CpuObserverListComponent;
   let fixture: ComponentFixture<CpuObserverListComponent>;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,22 +35,27 @@ describe('CpuObserverListComponent', () => {
         CpuUtilizationMonitorRoutes,
         SocketIoModule.forRoot(config),
         ReactiveFormsModule,
-        HttpClientModule,
+        HttpClientTestingModule,
         MatDialogModule
       ],
       providers: [
         EndpoitsService
       ]
-    }).compileComponents();
+    }).compileComponents().then(() => {
+      httpTestingController = TestBed.get(HttpTestingController);
+      fixture = TestBed.createComponent(CpuObserverListComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
   }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CpuObserverListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+
+    // I don't know where the call to this url actually comes from when executing this test!
+    // The socket.io module import can be commented out and the test still works...
+    httpTestingController.expectOne(
+      'http://localhost:3100/'
+    ).flush('');
   });
 });

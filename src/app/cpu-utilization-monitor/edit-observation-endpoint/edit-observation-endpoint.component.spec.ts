@@ -23,14 +23,12 @@ describe('EditObservationEndpointComponent', () => {
         FormBuilder,
         { provide: CpuObservationEndpoint, useValue: {} },
       ],
-    }).compileComponents();
+    }).compileComponents().then(() => {
+      fixture = TestBed.createComponent(EditObservationEndpointComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+    });
   }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(EditObservationEndpointComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

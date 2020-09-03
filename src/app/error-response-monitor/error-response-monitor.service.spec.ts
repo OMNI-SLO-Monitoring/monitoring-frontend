@@ -16,8 +16,12 @@ describe('ErrorResponseMonitorService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(ErrorResponseMonitorService);
     httpMock = TestBed.get(HttpTestingController);
+    service = TestBed.inject(ErrorResponseMonitorService);
+  });
+
+  afterEach(() => {
+    httpMock.verify();
   });
 
   it('should be created', () => {

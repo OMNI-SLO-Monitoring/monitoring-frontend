@@ -10,9 +10,10 @@
     <div>
         <p>{{monitorSelection.serviceUrl}}</p>
         <br>
-        <p>{{monitorSelection.id}}</p>
+        <p>{{monitorSelection._id}}</p>
     </div>
     <div>
-        <button type="button" mat-raised-button (click)="deleteSelection()">Delete</button>
+        <button type="button" mat-raised-button color="warn" (click)="deleteSelection()">Delete</button>
+        <button mat-raised-button color="primary" [routerLink]="'/logs/' + monitorSelection._id">Show Logs</button>
     </div>
 </mat-card>

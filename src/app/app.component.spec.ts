@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErrorResponseMonitorModule } from './error-response-monitor/error-response-monitor.module';
 import { MonitoringSelectionModule } from './monitoring-selection/monitoring-selection.module';
 import { FormsModule } from '@angular/forms';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -20,11 +21,14 @@ describe('AppComponent', () => {
         AppRoutingModule,
         BrowserAnimationsModule,
         MaterialModule,
-        HttpClientModule,
         ErrorResponseMonitorModule,
         MonitoringSelectionModule,
         FormsModule,
       ],
+      providers: [
+        // fix test sometimes failing in debug mode of jasmin
+        { provide: APP_BASE_HREF, useValue : '/' }
+      ]
     }).compileComponents();
   }));
 

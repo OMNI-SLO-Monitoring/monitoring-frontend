@@ -5,6 +5,7 @@ import { SelectionItemComponent } from './selection-item/selection-item.componen
 import { EditSelectionComponent } from './edit-selection/edit-selection.component';
 import { MaterialModule } from '../material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([])
   ],
   bootstrap: [SelectionListComponent]
 })

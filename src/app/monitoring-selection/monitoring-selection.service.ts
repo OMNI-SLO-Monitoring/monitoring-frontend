@@ -12,7 +12,7 @@ import {environment} from '../../environments/environment';
  * monitored services
  */
 export class MonitoringSelectionService {
-  backendUrl = `${environment.BACKEND_RESPONSE_MONITOR_URL}monitoring-selection`;
+  backendUrl = `${environment.BACKEND_ISSUE_CREATOR_URL}service-registration`;
 
   // array of monitored services objects, is used to display monitored services
   selectedServices: MonitoringSelectionDTO[] = [];
@@ -55,7 +55,7 @@ export class MonitoringSelectionService {
    * Sends a request to the backend to get all services currently monitored
    */
   getAllSelectedServices() {
-    this.httpClient.get(this.backendUrl).subscribe(res => {
+    this.httpClient.get(this.backendUrl + "/all").subscribe(res => {
       this.selectedServices = res as MonitoringSelectionDTO[];
       this.servicesSubject.next(this.selectedServices);
     })

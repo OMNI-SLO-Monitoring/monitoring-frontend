@@ -31,11 +31,16 @@ export class CpuObserverListComponent {
     this.endpointService.addEndpoint(endpoint);
   }
   /**
-   * open dialog and then adding endpoint after the dialog closes
+   * open dialog and add endpoint after the dialog closes
+   *
+   * only add endpoint if the res is not undefined
+   * response is undefined if the dialog was closed without saving the data
    */
   add() {
     this.matDialog.open(EditObservationEndpointComponent).afterClosed().subscribe(res => {
-      this.addObservationEndpoint(res);
+      if (res !== undefined) {
+        this.addObservationEndpoint(res);
+      }
     })
   }
 }

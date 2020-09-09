@@ -54,5 +54,11 @@ export class EditObservationEndpointComponent implements OnInit {
     this.newEndpointForm.reset();
     this.dialog.close(endpointData);
   }
-
+  /**
+   * When the close button is pressed on the dialog
+   * the dialog is closed without submitting data
+   */
+  onClose() {
+    this.dialog.close();
+  }
 }

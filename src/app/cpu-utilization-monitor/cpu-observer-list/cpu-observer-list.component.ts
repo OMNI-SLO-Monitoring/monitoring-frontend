@@ -33,7 +33,7 @@ export class CpuObserverListComponent {
   /**
    * open dialog and add endpoint after the dialog closes
    *
-   * only add endpoint if the res is not defined
+   * only add endpoint if the res is not undefined
    * response is undefined if the dialog was closed without saving the data
    */
   add() {

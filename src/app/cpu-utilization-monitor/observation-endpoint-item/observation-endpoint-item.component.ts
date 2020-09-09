@@ -53,6 +53,7 @@ export class ObservationEndpointItemComponent implements OnInit {
   }
   /**
    * edit the endpoint in a dialog and update it
+   *
    * will update only if the dialog was closed via the save button
    * else no update will happen
    */

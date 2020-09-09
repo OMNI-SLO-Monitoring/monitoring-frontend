@@ -1,4 +1,4 @@
-# Monitoring front end
+# Monitoring Frontend
 
 The application provides a combined frontend for both monitors [CPU-tracking-monitoring-service](https://github.com/ccims/CPU-tracking-monitoring-service) and the [Error-response-monitoring-service](https://github.com/ccims/Error-response-monitoring-service).
 
@@ -8,20 +8,20 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Usage
 
-### Cpu-tracking-monitoring-service:
+### Cpu-Tracking Monitor:
 
-The CPU-tracking-monitoring-serivce provides the possibility to add services which are to be monitored. These services as of now only comprise the database service. The services that are added need
-to be importing the [cpu-utilization-observer](https://github.com/ccims/cpu-utilization-observer) package which exposes an endpoint that the backend of the cpu-tracking-monitoring-service scrapes for
+The Cpu-Tracking Monitor provides the possibility to add services which are to be monitored. These services as of now only comprise the database service. The services that are added need
+to be importing the [cpu-utilization-observer](https://github.com/ccims/cpu-utilization-observer) package which exposes an endpoint that the backend of the Cpu-Tracking Monitor scrapes for
 the cpu load. 
 
 
-### Error-response-monitoring-service:
+### Error-Response Monitor:
 
-The Error-response-monitoring-service lets one define certain request parameters in its UI for testing the database service in a environment that closely resembles its use cases. The user can adjust the type of request (GET or POST) and the expected response 
-which in the case of a GET request is the response data and in the case of a POST request is the HTTP status code. In its UI, one can also fetch all logs received by the backend of the Error-response-monitoring-service
+The Error-Response Monitor lets one define certain request parameters in its UI for testing the database service in a environment that closely resembles its use cases. The user can adjust the type of request (GET or POST) and the expected response 
+which in the case of a GET request is the response data and in the case of a POST request is the HTTP status code. In its UI, one can also fetch all logs received by the backend of the Error-Response Monitor
 and observe specifically the logs created by work checking the database service.
 
-### Monitoring-selection:
+### Monitoring Selection:
 
 The combined frontend also offers the feature to register multiple services that are to be monitored. Upon registration, the Issue Creator will only assess those logs retrieved from the Kafka Queue whose corresponding service is already registered. The services are stored in the database of the Issue Creator.
 

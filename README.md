@@ -23,7 +23,7 @@ and observe specifically the logs created by work checking the database service.
 
 ### Monitoring-selection:
 
-The combined frontend also offers the feature to register multiple services that are to be monitored. Upon registration, the Error-response monitor stores the respective information about the service in the database and will ony accept incoming logs from those services, rejecting services that are not registered in the database. 
+The combined frontend also offers the feature to register multiple services that are to be monitored. Upon registration, the Issue Creator will only assess those logs retrieved from the Kafka Queue whose corresponding service is already registered. The services are stored in the database of the Issue Creator.
 
 ### Logs:
 

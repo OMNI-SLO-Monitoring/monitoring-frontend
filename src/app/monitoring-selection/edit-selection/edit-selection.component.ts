@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 /**
- * Handles the form for adding services to the monitoring
+ * Handles the form for adding services to the monitoring system.
+ * Form could also be used to edit selections but that feature is not implemented in the current version. 
  */
 @Component({
   selector: 'app-edit-selection',

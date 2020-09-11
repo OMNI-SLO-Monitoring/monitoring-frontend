@@ -30,10 +30,7 @@ export class ErrorResponseMonitorComponent implements OnInit {
   logFetchErrorMsg: string;
 
   constructor(private errorResponseService: ErrorResponseMonitorService) {
-    /*
-    setInterval(() => {
-      this.getLogMessages();
-    }, 1000);*/
+    
   }
 
   ngOnInit(): void {
@@ -45,6 +42,8 @@ export class ErrorResponseMonitorComponent implements OnInit {
   /**
    * Stores the url endpoint input in local storage if the respective
    * input field is not empty
+   * 
+   * @param url that will be stored
    */
   storeUrlEndpoint(url: string) {
     console.log(url);

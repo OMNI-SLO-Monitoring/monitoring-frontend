@@ -33,6 +33,7 @@ export class ObservationEndpointItemComponent implements OnInit {
   }
   /**
    * updating the endpoint with new data given
+   * 
    * @param endpoitData the given endpoint 
    */
   updateEndpoint(endpointData) {

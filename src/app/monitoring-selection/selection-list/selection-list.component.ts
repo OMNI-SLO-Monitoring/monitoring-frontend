@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EditSelectionComponent } from '../edit-selection/edit-selection.component';
 import { MonitoringSelectionService } from '../monitoring-selection.service';

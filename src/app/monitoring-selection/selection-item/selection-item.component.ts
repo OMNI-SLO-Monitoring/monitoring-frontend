@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { EditSelectionComponent } from '../edit-selection/edit-selection.component';
-import { MonitoringSelectionService } from '../monitoring-selection.service';
 import { MonitoringSelectionDTO } from '../dto/monitoring-selection.dto';
+import { MonitoringSelectionService } from '../monitoring-selection.service';
 
 
 /**
@@ -13,11 +12,11 @@ import { MonitoringSelectionDTO } from '../dto/monitoring-selection.dto';
   templateUrl: './selection-item.component.html',
   styleUrls: ['./selection-item.component.scss']
 })
-export class SelectionItemComponent{
+export class SelectionItemComponent {
 
   @Input() monitorSelection: MonitoringSelectionDTO;
   constructor(private matDialog: MatDialog,
-              private monitoringSelectionService: MonitoringSelectionService) { }
+    private monitoringSelectionService: MonitoringSelectionService) { }
 
   /**
    * Deletes the current item

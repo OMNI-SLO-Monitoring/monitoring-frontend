@@ -23,7 +23,8 @@ export class EditObservationEndpointComponent implements OnInit {
   ) {}
   
   /**
-   * make forms for the endpoint with the new data received of the endpoint
+   * Creates forms for the new endpoint with the received endpoint data.
+   * Creates form without values if no data is given (e.g. when adding a new endpoint)
    */
   ngOnInit(): void {
     if (!this.endpoint) {

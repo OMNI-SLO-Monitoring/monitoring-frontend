@@ -30,13 +30,13 @@
       <div class="getRequest" *ngIf="httpMethod === 'get'">
         <mat-form-field appearance="fill">
           <mat-label> Expected Response</mat-label>
-          <input
+          <textarea
             matInput
             [(ngModel)]="expResponse"
             name="responseForGet"
             ngDefaultControl
             required
-          />
+          ></textarea>
         </mat-form-field>
       </div>
       <div class="getRequest" *ngIf="httpMethod === 'post'">
@@ -78,9 +78,7 @@
   <br />
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
-      <mat-panel-title>
-        Work Check Logs
-      </mat-panel-title>
+      <mat-panel-title> Work Check Logs </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-card>
       <ul *ngIf="workLogs">
@@ -101,9 +99,7 @@
   </mat-expansion-panel>
   <mat-expansion-panel hideToggle>
     <mat-expansion-panel-header>
-      <mat-panel-title>
-        All Logs
-      </mat-panel-title>
+      <mat-panel-title> All Logs </mat-panel-title>
     </mat-expansion-panel-header>
     <button mat-raised-button color="primary" (click)="getAllLogs()">
       Get All Logs

@@ -12,7 +12,6 @@ import { MonitoringSelectionService } from '../monitoring-selection.service';
   styleUrls: ['./selection-list.component.scss'],
 })
 export class SelectionListComponent {
-
   constructor(
     private matDialog: MatDialog,
     public monitoringSelectionService: MonitoringSelectionService
@@ -25,8 +24,14 @@ export class SelectionListComponent {
    */
   async add() {
     this.matDialog
-      .open(EditSelectionComponent)
+      .open(EditSelectionComponent, {
+        hasBackdrop: true,
+      })
       .afterClosed()
-      .subscribe(async (selectedService) => this.monitoringSelectionService.addSelection(selectedService));
+      .subscribe(async (selectedService) => {
+        if (!(selectedService === undefined)) {
+          this.monitoringSelectionService.addSelection(selectedService);
+        }
+      });
   }
 }

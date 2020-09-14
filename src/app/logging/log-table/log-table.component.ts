@@ -77,7 +77,7 @@ export class LogTableComponent implements OnInit {
   serviceId: string;
   selectedService: MonitoringSelectionDTO;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private monitoringService: MonitoringSelectionService) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, public monitoringService: MonitoringSelectionService) {
     this.serviceId = this.route.snapshot.params["id"];
     this.fetchLogs();
     if (this.serviceId) {
@@ -100,6 +100,26 @@ export class LogTableComponent implements OnInit {
       this.dataSource = new MatTableDataSource(logs as LogMessageFormat[]);
       this.dataSource.sort = this.sort;
     })
+  }
+
+  getLogTypeLabel(logType: LogType) {
+    switch (logType) {
+      case LogType.CPU:
+        return "CPU";
+      case LogType.ERROR:
+        return "Error";
+      case LogType.CB_OPEN:
+        return "Circuit Breaker Open";
+      case LogType.TIMEOUT:
+        return "Timeout Error";
+      default:
+        break;
+    }
+  }
+
+  getServiceNameFromUrl(url: string) {
+    const service = this.monitoringService.getServiceByUrl(url);
+    return service ? service.name : url;
   }
   
   ngOnInit(): void {

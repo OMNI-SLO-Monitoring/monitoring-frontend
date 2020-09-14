@@ -70,4 +70,8 @@ export class MonitoringSelectionService {
   getServiceById(id: string) {
     return this.selectedServices.find(service => service._id == id);
   }
+
+  getServiceByUrl(url: string) {
+    return this.selectedServices.find(service => service.serviceUrl === url);
+  }
 }

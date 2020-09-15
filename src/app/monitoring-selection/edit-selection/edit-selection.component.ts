@@ -30,8 +30,6 @@ export class EditSelectionComponent implements OnInit {
   /**
    * On submitting the form resets the input fields and gives the data to
    * subscribed components
-   *
-   * @param selectionData Input of the form
    */
   onSubmit() {
     const { value, valid } = this.newSelectionForm;

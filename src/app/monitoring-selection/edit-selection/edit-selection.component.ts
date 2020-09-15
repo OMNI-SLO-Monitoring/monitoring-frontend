@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 /**
  * Handles the form for adding services to the monitoring
  */
@@ -23,8 +23,8 @@ export class EditSelectionComponent implements OnInit {
    */
   ngOnInit(): void {
     this.newSelectionForm = this.formBuilder.group({
-      name: '',
-      serviceUrl: '',
+      name: ['', [Validators.required]],
+      serviceUrl: ['', [Validators.required]],
     });
   }
   /**
@@ -33,8 +33,18 @@ export class EditSelectionComponent implements OnInit {
    *
    * @param selectionData Input of the form
    */
-  onSubmit(selectionData) {
-    this.newSelectionForm.reset();
-    this.dialog.close(selectionData);
+  onSubmit() {
+    const { value, valid } = this.newSelectionForm;
+    if (valid) {
+      this.newSelectionForm.reset();
+      this.dialog.close(value);
+    }
+  }
+
+  /**
+   * Closes the dialog window without passing over the content of the input fields
+   */
+  onCloseButton(): void {
+    this.dialog.close();
   }
 }

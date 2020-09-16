@@ -35,7 +35,7 @@ describe('SelectionListComponent', () => {
     expect(component).toBeTruthy();
 
     httpTestingController.expectOne(
-      'http://localhost:3400/monitoring-selection'
+      'http://localhost:3500/service-registration/all'
     ).flush('[]');
   });
 });

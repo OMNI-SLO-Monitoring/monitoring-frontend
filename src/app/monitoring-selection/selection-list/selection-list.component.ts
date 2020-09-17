@@ -30,7 +30,8 @@ export class SelectionListComponent {
       .afterClosed()
       .subscribe(async (selectedService) => {
         if (!(selectedService === undefined)) {
-          this.monitoringSelectionService.addSelection(selectedService);
+          await this.monitoringSelectionService.addSelection(selectedService);
+          window.location.reload();
         }
       });
   }

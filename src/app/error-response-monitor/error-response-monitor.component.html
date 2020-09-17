@@ -88,12 +88,12 @@
           <h3>Log Message Number {{ i + 1 }}</h3>
           <p>
             Type: {{ log.type }} | Time: {{ log.time }} | Detector:
-            {{ log.detector }} | Source: {{ log.source }}
+            {{ log.detectorUrl }} | Source: {{ log.sourceUrl }}
           </p>
           <p>Message: {{ log.message }}</p>
           <p>
             Data: Expected: {{ log.data.expected }}, Actual:
-            {{ log.data.result }}
+            {{ log.data.actual }}
           </p>
         </li>
       </ul>
@@ -119,12 +119,12 @@
           <h3>Log Message Number {{ i + 1 }}</h3>
           <p>
             Type: {{ log.type }} | Time: {{ log.time }} | Detector:
-            {{ log.detector }} | Source: {{ log.source }}
+            {{ log.detectorUrl }} | Source: {{ log.sourceUrl }}
           </p>
           <p>Message: {{ log.message }}</p>
           <p>
             Data: Expected: {{ log.data.expected }}, Actual:
-            {{ log.data.result }}
+            {{ log.data.actual }}
           </p>
         </li>
       </ul>

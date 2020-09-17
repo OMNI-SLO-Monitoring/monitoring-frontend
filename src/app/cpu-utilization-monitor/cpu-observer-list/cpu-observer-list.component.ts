@@ -10,16 +10,18 @@ import { EndpoitsService } from '../endpoits.service';
   styleUrls: ['./cpu-observer-list.component.scss']
 })
 /**
- * component to add a cpu observation endpoint to list of observed endpoints
+ * component to add a CPU observation endpoint to list of observed endpoints
  */
 export class CpuObserverListComponent {
 
   constructor(public endpointService: EndpoitsService, private matDialog: MatDialog) { }
 
   /**
-   * creates a  new CpuObservationEndpoint object and hands it to endpointsService where its saved and can be started for observation.
+   * creates a  new CpuObservationEndpoint object and hands it to endpointsService where it is saved and can be started for observation.
    * 
-   * @param endpointData CpuObservationEndpoint object as an observation endpoint
+   * @param endpointData input endpoint data from user in frontend MatDialog. 
+   * Dialog format is defined in: edit-observation-endpoint.component.ts (newEndpointForm attribute)
+   * but can't be type annotated as the MatDialog is not using an object type. 
    */
   addObservationEndpoint(endpointData) {
     const endpoint = new CpuObservationEndpoint(

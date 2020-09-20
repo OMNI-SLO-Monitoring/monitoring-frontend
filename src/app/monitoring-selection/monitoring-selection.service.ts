@@ -31,7 +31,6 @@ export class MonitoringSelectionService {
   async addSelection(selection: MonitoringSelectionDTO) {
     try {
       const service = await this.httpClient.post(this.backendUrl, selection).toPromise() as MonitoringSelectionDTO;
-      console.log(service);
       this.selectedServices.push(service);
     } catch (err) {
       console.log('Backend not available');

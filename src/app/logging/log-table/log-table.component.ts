@@ -9,47 +9,6 @@ import { MonitoringSelectionDTO } from 'src/app/monitoring-selection/dto/monitor
 import { MonitoringSelectionService } from 'src/app/monitoring-selection/monitoring-selection.service';
 import {environment} from '../../../environments/environment';
 
-// Dummy Logs for testing purpose
-const dummyLogs: LogMessageFormat[] = [
-  {
-    time: Date.now() + 1000 * 60 * 60 * 2, // add two hours to current time
-    data: {
-      cpuUtilization: 70
-    },
-    detector: "Detector X",
-    source: "Source Y",
-    type: LogType.CPU,
-    message: null
-  },
-  {
-    time: Date.now() + 1000 * 60 * 60 * 2, // add two hours to current time
-    detector: "Detector A",
-    source: "Source Y",
-    type: LogType.ERROR,
-    data: {
-      expected: "10",
-      result: "12"
-    },
-    message: null
-  },
-  {
-    time: Date.now() + 1000 * 60 * 60, // add one hour to current time
-    data: null,
-    detector: "Detector B",
-    source: "Source Y",
-    type: LogType.CB_OPEN,
-    message: null
-  },
-  {
-    time: Date.now(),
-    data: null,
-    detector: "Detector C",
-    source: "Source Y",
-    type: LogType.CPU,
-    message: null
-  }
-]
-
 @Component({
   selector: 'app-log-table',
   templateUrl: './log-table.component.html',
@@ -66,7 +25,7 @@ const dummyLogs: LogMessageFormat[] = [
 /**
  * component for a table containing all Logs
  */
-export class LogTableComponent implements OnInit {
+export class LogTableComponent {
 
   dataSource: MatTableDataSource<LogMessageFormat>;
   tableColumns = ["time", "type", "detector", "source"];
@@ -106,7 +65,6 @@ export class LogTableComponent implements OnInit {
    * Assigns a Label that will be displayed in the log table for each LogType
    * 
    * @param logType that should be converted
-   * 
    * @returns a Label for each LogType
    */
   getLogTypeLabel(logType: LogType) {
@@ -128,7 +86,6 @@ export class LogTableComponent implements OnInit {
    * Retrieves the name of a registered service by its url
    * 
    * @param url of a service
-   * 
    * @returns name of service with the given url
    */
   getServiceNameFromUrl(url: string) {
@@ -136,9 +93,4 @@ export class LogTableComponent implements OnInit {
     return service ? service.name : url;
   }
   
-  ngOnInit(): void {
-    // Uncomment this to test with dummy logs
-    // this.dataSource = new MatTableDataSource(dummyLogs);
-    // this.dataSource.sort = this.sort;
-  }
 }

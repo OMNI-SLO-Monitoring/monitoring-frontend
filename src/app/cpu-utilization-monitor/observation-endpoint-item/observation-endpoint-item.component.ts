@@ -53,6 +53,9 @@ export class ObservationEndpointItemComponent implements OnInit {
   }
   /**
    * edit the endpoint in a dialog and update it
+   *
+   * will update only if the dialog was closed via the save button
+   * else no update will happen
    */
   edit() {
     this.matDialog
@@ -61,7 +64,9 @@ export class ObservationEndpointItemComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((res) => {
-        this.updateEndpoint(res);
+        if (res !== undefined) {
+          this.updateEndpoint(res);
+        }
       });
   }
 }

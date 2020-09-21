@@ -36,7 +36,7 @@ export class LogTableComponent {
   serviceId: string;
   selectedService: MonitoringSelectionDTO;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private monitoringService: MonitoringSelectionService) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, public monitoringService: MonitoringSelectionService) {
     this.serviceId = this.route.snapshot.params["id"];
     this.fetchLogs();
     if (this.serviceId) {
@@ -60,4 +60,37 @@ export class LogTableComponent {
       this.dataSource.sort = this.sort;
     })
   }
+
+  /**
+   * Assigns a Label that will be displayed in the log table for each LogType
+   * 
+   * @param logType that should be converted
+   * @returns a Label for each LogType
+   */
+  getLogTypeLabel(logType: LogType) {
+    switch (logType) {
+      case LogType.CPU:
+        return "CPU";
+      case LogType.ERROR:
+        return "Error";
+      case LogType.CB_OPEN:
+        return "Circuit Breaker Open";
+      case LogType.TIMEOUT:
+        return "Timeout Error";
+      default:
+        break;
+    }
+  }
+
+  /**
+   * Retrieves the name of a registered service by its url
+   * 
+   * @param url of a service
+   * @returns name of service with the given url
+   */
+  getServiceNameFromUrl(url: string) {
+    const service = this.monitoringService.getServiceByUrl(url);
+    return service ? service.name : url;
+  }
+  
 }

@@ -9,17 +9,17 @@
         
         <ng-container matColumnDef="type">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Log Type</th>
-            <td mat-cell *matCellDef="let log">{{log.type}}</td>
+            <td mat-cell *matCellDef="let log">{{getLogTypeLabel(log.type)}}</td>
         </ng-container>
     
         <ng-container matColumnDef="detector">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Detector</th>
-            <td mat-cell *matCellDef="let log">{{log.detector}}</td>
+            <td mat-cell *matCellDef="let log">{{getServiceNameFromUrl(log.detectorUrl)}}</td>
         </ng-container>
     
         <ng-container matColumnDef="source">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>Source</th>
-            <td mat-cell *matCellDef="let log">{{log.source}}</td>
+            <td mat-cell *matCellDef="let log">{{getServiceNameFromUrl(log.sourceUrl)}}</td>
         </ng-container>
 
         <ng-container matColumnDef="expandedDetail">
@@ -27,7 +27,7 @@
                 <div class="example-element-detail" [@detailExpand]="log == expandedLog ? 'expanded' : 'collapsed'">
                     message: {{log.message}}
                     <br>
-                    custom-data: {{log.data | json}}
+                    data: {{log.data | json}}
                 </div>
             </td>
         </ng-container>

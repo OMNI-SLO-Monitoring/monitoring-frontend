@@ -28,10 +28,10 @@ export class MonitoringSelectionService {
    *
    * @param selection Service added to be monitored
    */
-  addSelection(selection: MonitoringSelectionDTO) {
+  async addSelection(selection: MonitoringSelectionDTO) {
     try {
-      this.httpClient.post(this.backendUrl, selection).toPromise();
-      this.selectedServices.push(selection);
+      const service = await this.httpClient.post(this.backendUrl, selection).toPromise() as MonitoringSelectionDTO;
+      this.selectedServices.push(service);
     } catch (err) {
       console.log('Backend not available');
     }
@@ -69,5 +69,9 @@ export class MonitoringSelectionService {
    */
   getServiceById(id: string) {
     return this.selectedServices.find(service => service._id == id);
+  }
+
+  getServiceByUrl(url: string) {
+    return this.selectedServices.find(service => service.serviceUrl === url);
   }
 }

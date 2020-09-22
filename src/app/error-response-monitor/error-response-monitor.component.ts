@@ -44,7 +44,6 @@ export class ErrorResponseMonitorComponent implements OnInit {
    * @param url the url populating the Url Endpoint input field
    */
   storeUrlEndpoint(url: string) {
-    console.log(url);
     if (url.length > 0) {
       localStorage.setItem('urlEndpoint', this.urlEndpoint);
     }

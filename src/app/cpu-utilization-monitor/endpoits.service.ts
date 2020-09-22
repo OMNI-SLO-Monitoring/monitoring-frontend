@@ -22,15 +22,16 @@ export class EndpoitsService {
   }
 
   /**
-   * send a get request to  CPU-monitor backend and get the list of endpoints
+   * send a get request to  CPU-monitor backend and get the list of all observed endpoints
    */
   getObservationEndpoints() {
     this.observationEndpointsObs = this.http.get<CpuObservationEndpoint[]>(this.api);
   }
 
   /**
-   * send post request to CPU-monitor backend and add the endpoint to the list
-   * @param endpoint the given cpu endpoint
+   * send post request to CPU-monitor backend and add the endpoint to the list of observed endpoints
+   * 
+   * @param endpoint the given CPU endpoint to be added
    */
   addEndpoint(endpoint: CpuObservationEndpoint) {
     this.observationEndpointsObs = this.http.post<CpuObservationEndpoint[]>(this.api, endpoint);
@@ -38,7 +39,8 @@ export class EndpoitsService {
 
   /**
    * send post request to CPU-monitor backend /edit to edit and then update the specified endpoint
-   * @param endpoint the given cpu endpoint
+   * 
+   * @param endpoint the given CPU endpoint to be edited
    */
   editEndpoint(endpoint: CpuObservationEndpoint) {
     this.observationEndpointsObs = this.http.post<CpuObservationEndpoint[]>(`${this.api}edit`, endpoint);
@@ -46,7 +48,8 @@ export class EndpoitsService {
 
   /**
    * send a post request to CPU-monitor backendCPU-monitor backend /delete to delete the given endpoint
-   * @param endpoint the given cpu endpoint
+   * 
+   * @param endpoint the given CPU endpoint to be deleted
    */
   deleteEndpoint(endpoint: CpuObservationEndpoint) {
     this.observationEndpointsObs = this.http.post<CpuObservationEndpoint[]>(`${this.api}delete`, endpoint);

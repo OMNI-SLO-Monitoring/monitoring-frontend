@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
-
+/**
+ * Gives overall structure of entire monitoring frontend and loads sidebar to navigate to different components.
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { CpuObserverListComponent } from './cpu-utilization-monitor/cpu-observer-list/cpu-observer-list.component';
+import { RouterModule, Routes } from '@angular/router';
 import { ErrorResponseMonitorComponent } from './error-response-monitor/error-response-monitor.component';
 import { SelectionListComponent } from './monitoring-selection/selection-list/selection-list.component';
 
+//define what component should be loaded depending on enpoint(path).
 const routes: Routes = [
   {
     path: '',

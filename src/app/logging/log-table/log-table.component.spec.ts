@@ -17,35 +17,35 @@ describe('LogTableComponent', () => {
             data: {
                 cpuUtilization: 70
             },
-            detector: "Detector X",
-            source: "Source Y",
+            detectorUrl: "Detector X",
+            sourceUrl: "Source Y",
             type: LogType.CPU,
             message: null
         },
         {
             time: 1000 * 60 * 60 * 2,
-            detector: "Detector A",
-            source: "Source Y",
+            detectorUrl: "Detector A",
+            sourceUrl: "Source Y",
             type: LogType.ERROR,
             data: {
                 expected: "10",
-                result: "12"
+                actual: "12"
             },
             message: null
         },
         {
             time: 1000 * 60 * 60,
             data: null,
-            detector: "Detector B",
-            source: "Source Y",
+            detectorUrl: "Detector B",
+            sourceUrl: "Source Y",
             type: LogType.CB_OPEN,
             message: null
         },
         {
             time: 0,
             data: null,
-            detector: "Detector C",
-            source: "Source Y",
+            detectorUrl: "Detector C",
+            sourceUrl: "Source Y",
             type: LogType.CPU,
             message: null
         }
@@ -108,7 +108,7 @@ describe('LogTableComponent', () => {
             let row1 = tableRows[1];
             //removed but can be added by adjusting with your current time zone
             //expect(row1.cells[0].innerHTML).toBe('01.01.1970 03:00');
-            expect(row1.cells[1].innerHTML).toBe('Cpu');
+            expect(row1.cells[1].innerHTML).toBe('CPU');
             expect(row1.cells[2].innerHTML).toBe('Detector X');
             expect(row1.cells[3].innerHTML).toBe('Source Y');
 
@@ -120,7 +120,7 @@ describe('LogTableComponent', () => {
             expect(row2.cells[3].innerHTML).toBe('Source Y');
 
 
-            done();
+            done(); 
         });
 
     })

@@ -18,6 +18,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'issue-creator',
+    loadChildren: () =>
+      import('./issue-creator/issue-creator.module').then(
+        (m) => m.IssueCreatorModule
+      ),
+  },
+  {
     path: 'error-response-monitor',
     component: ErrorResponseMonitorComponent,
   },

@@ -1,7 +1,10 @@
 <div class="content">
     <div class="row">
         <h1 style="flex-grow: 1;">Monitored services</h1>
-        <button mat-raised-button (click)="add()">Add</button>
+        <button mat-button color="primary" (click)="add()">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+            Add
+        </button>
     </div>
     <div *ngFor="let service of monitoringSelectionService.servicesSubject | async">
         <br>

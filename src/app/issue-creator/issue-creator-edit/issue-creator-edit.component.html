@@ -1,0 +1,57 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        Issue Creators
+        <button mat-button style="margin-left: auto;" color="primary" (click)="onSave()">Save</button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card *ngIf="issueCreator">
+    <h3>Meta</h3>
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" required name="name" [(ngModel)]="issueCreator.name" #name="ngModel">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)">
+            <mat-error *ngIf="name.errors.required">Name is required</mat-error>
+        </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput type="text" name="description" [(ngModel)]="issueCreator.description" #description="ngModel">
+    </mat-form-field>
+
+    <h3>Rules</h3>
+    <mat-form-field appearance="fill">
+        <mat-label>Source</mat-label>
+        <mat-select name="source" [(ngModel)]="issueCreator.rules.sourceUrl">
+            <mat-option [value]="'none'">Any</mat-option>
+            <mat-option [value]="service.serviceUrl" *ngFor="let service of serviceRegistration.servicesSubject | async">{{service.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Detector</mat-label>
+        <mat-select name="detector" [(ngModel)]="issueCreator.rules.detectorUrl">
+            <mat-option [value]="'none'">Any</mat-option>
+            <mat-option [value]="service.serviceUrl" *ngFor="let service of serviceRegistration.servicesSubject | async">{{service.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Log Types</mat-label>
+        <mat-select [(ngModel)]="issueCreator.rules.logTypes" multiple>
+            <mat-option *ngFor="let type of LogType | keyvalue" [value]="type.value">{{type.value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</mat-card>
+
+<div *ngIf="issueCreator">
+    <h2 style="margin-left: 16px;">Logs</h2>
+    <mat-card *ngFor="let log of issueCreator.logs">
+        <p>source: {{ log.sourceUrl | serviceName }}</p>
+        <p>detector: {{ log.detectorUrl | serviceName }}</p>
+        <p>time: {{ log.time | date: 'dd.MM.yyyy HH:mm'}}</p>
+        <p>type: {{ log.type | logTypeLabel}}</p>
+    </mat-card>
+</div>

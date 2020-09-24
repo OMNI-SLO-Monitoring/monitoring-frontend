@@ -1,19 +1,10 @@
 <mat-card>
-    <div>
-        <div class="row">
-            <h2 class="card-title" style="flex-grow: 1;">
-              {{monitorSelection.name}}
-            </h2>
-        </div>
+    <div class="row">
+        <h2 class="card-title" style="flex-grow: 1;">
+            {{monitorSelection.name}}
+        </h2>
+        <button mat-button color="primary" [routerLink]="'/logs/' + monitorSelection._id">Show Logs</button>
+        <button type="button" mat-button color="warn" (click)="deleteSelection()">Delete</button>
     </div>
-    <hr>
-    <div>
-        <p>{{monitorSelection.serviceUrl}}</p>
-        <br>
-        <p>{{monitorSelection._id}}</p>
-    </div>
-    <div>
-        <button type="button" mat-raised-button color="warn" (click)="deleteSelection()">Delete</button>
-        <button mat-raised-button color="primary" [routerLink]="'/logs/' + monitorSelection._id">Show Logs</button>
-    </div>
+    <p>{{monitorSelection.serviceUrl}}</p>
 </mat-card>

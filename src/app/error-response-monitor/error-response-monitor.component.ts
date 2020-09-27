@@ -64,6 +64,7 @@ export class ErrorResponseMonitorComponent implements OnInit {
       )
       .subscribe(
         (res) => {
+          console.log(res);
           this.receivedResponse = res.msg;
           if (res.log) {
             this.workLogs.push(res.log);

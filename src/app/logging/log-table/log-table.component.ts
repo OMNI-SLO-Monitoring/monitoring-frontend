@@ -40,7 +40,9 @@ export class LogTableComponent {
     this.serviceId = this.route.snapshot.params["id"];
     this.fetchLogs();
     if (this.serviceId) {
-      this.selectedService = monitoringService.getServiceById(this.serviceId);
+      this.monitoringService.servicesSubject.subscribe(res => {
+        this.selectedService = monitoringService.getServiceById(this.serviceId);
+      })
     }
   }
 
